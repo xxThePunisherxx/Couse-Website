@@ -1,0 +1,15 @@
+.Hero_Container {
+    min-height: 90vh;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.47);
+    background-image: url(../../../public/Img/hero.jpeg);
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+.Hero {
+    text-align: center;
+    width: 80%;
+}

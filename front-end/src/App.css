@@ -1,0 +1,29 @@
+:root {
+    --NavLink-active: #0F5288;
+    --NavLink-inactive: black;
+    /* --NavLink-inactive: #0f5188ea; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Link_Text_Active {
+    display: block;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+    color: var(--NavLink-active);
+}
+
+.Link_Text_Unactive {
+    display: block;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    color: var(--NavLink-inactive);
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+}

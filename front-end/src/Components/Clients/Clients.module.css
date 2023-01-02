@@ -1,0 +1,48 @@
+:root {
+    --headingOne-size: 5rem;
+    --HeadingHighlight: #0f5288;
+    --buttonHover-bg: #0f5288;
+}
+
+.HeadingHighlight {
+    color: var(--HeadingHighlight);
+}
+
+.ClientsContainer {
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+}
+
+.ClientsContainer h1 {
+    text-align: center;
+    font-size: var(--headingOne-size);
+    padding: 5rem;
+}
+
+.ClientsContainer button {
+    margin: 0 auto;
+    width: 150px;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: transparent;
+    transition: all ease-in .2s;
+    margin-top: 30px;
+}
+
+.ClientsContainer button:hover {
+    background-color: var(--buttonHover-bg);
+}
+
+.ImagesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+.ImagesGrid img {
+    width: 150px;
+}
