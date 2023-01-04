@@ -1,4 +1,33 @@
+:root {
+    --headingOne-size: 5rem;
+    --headingOneHighlight-color: #0f5288;
+}
+
+
+.MainHeading {
+    text-align: center;
+    font-size: var(--headingOne-size);
+    padding: 5rem;
+    text-transform: capitalize;
+}
+
+.HeadingHighlight {
+    color: var(--headingOneHighlight-color);
+}
+
 .testomonialsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+
+}
+
+.testomonial {
+    background-color: blanchedalmond;
+}
+
+.testomonialsGrid img {
+    /* width: 300px; */
+    height: 250px;
+    /* border-radius: 10000000rem; */
 }

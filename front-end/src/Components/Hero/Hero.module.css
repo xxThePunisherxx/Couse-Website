@@ -1,15 +1,89 @@
+:root {
+
+
+    --buttonHover-bg: #0f5288;
+
+
+}
+
+a {
+    color: black;
+}
+
 .Hero_Container {
-    min-height: 90vh;
     display: grid;
     place-items: center;
-    background-color: rgba(0, 0, 0, 0.47);
-    background-image: url(../../../public/Img/hero.jpeg);
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    background-size: cover;
+    background-color: #0f5288;
+    color: white;
+    margin-bottom: 100px;
 }
 
 .Hero {
-    text-align: center;
-    width: 80%;
+    display: grid;
+    grid-template-columns: 30% 55% 15%;
+}
+
+.left {
+    padding: 2rem;
+}
+
+.left h1 {
+    font-size: 3rem;
+    margin-top: 150px;
+}
+
+.left h2 {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.left button {
+    width: 150px;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: transparent;
+    transition: all ease-in .2s;
+}
+
+
+.left button:hover {
+    background-color: var(--buttonHover-bg);
+}
+
+.mid img {
+    width: 100%;
+}
+
+.right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+
+}
+
+.right>div {
+    display: grid;
+    align-content: center;
+    row-gap: 10px;
+    padding: 1rem;
+    height: 100%;
+}
+
+.right h1 {
+    font-size: 2rem;
+}
+
+.right h2 {
+    font-size: 1.3rem;
+}
+
+.right img {
+    width: 20%;
+}
+
+.bottom {
+    background-color: #81e9e6;
+    color: #122c91;
 }

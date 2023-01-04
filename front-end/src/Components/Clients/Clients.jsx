@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Clients.module.css";
+import { Link } from "react-router-dom";
 
 const Clients = () => {
 	const Clients = [
@@ -19,7 +20,10 @@ const Clients = () => {
 					<img key={item.link} src={item.link} alt={item.link} />
 				))}
 			</div>
-			<button>View More</button>
+
+			<button>
+				<Link to={"/allClients"}>View More</Link>
+			</button>
 		</div>
 	);
 };

@@ -1,0 +1,144 @@
+:root {
+    --headingOne-size: 5rem;
+    --headingOne-color: black;
+    --headingOneHighlight-color: #0f5288;
+    --gridColumns: repeat(4, 400px);
+    --gridH1-fontsize: 1.3rem;
+    --gridH2-fontsize: 1rem;
+    --buttonHover-bg: #0f5288;
+    --button-border: black;
+    --enlarge: scale3d(1.01, 1.01, 1.01);
+}
+
+.TrainingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+}
+
+.TrainingGrid {
+    display: grid;
+    grid-template-columns: var(--gridColumns);
+    column-gap: 20px;
+    row-gap: 20px;
+
+
+}
+
+.MainHeading {
+    text-align: center;
+    font-size: var(--headingOne-size);
+    padding: 5rem;
+}
+
+.HeadingHighlight {
+    color: var(--headingOneHighlight-color);
+}
+
+.Training {
+    display: flex;
+    flex-direction: column;
+    transition: all ease-in .2s;
+}
+
+.Training:hover {
+    cursor: pointer;
+    border-radius: 15px;
+    transform: var(--enlarge);
+}
+
+.Training h1 {
+    font-size: var(--gridH1-fontsize);
+    padding: 15px;
+}
+
+.Training h2 {
+    font-size: var(--gridH2-fontsize);
+    padding: 15px;
+}
+
+
+
+.Training button {
+    width: 150px;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: transparent;
+    transition: all ease-in .2s;
+}
+
+.Training button:hover {
+    background-color: var(--buttonHover-bg);
+}
+
+
+@media screen and (max-width: 1669px) {
+    :root {
+        --gridColumns: repeat(3, 400px);
+        --headingOne-size: 4rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1440px) {
+    :root {
+        --gridColumns: repeat(3, 300px);
+        --headingOne-size: 4rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+}
+
+
+@media screen and (max-width: 960px) {
+    :root {
+        --gridColumns: repeat(2, 400px);
+        --headingOne-size: 3rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+}
+
+
+@media screen and (max-width: 840px) {
+    :root {
+        --gridColumns: repeat(1, 400px);
+        --headingOne-size: 3rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    :root {
+        --gridColumns: repeat(1, 300px);
+        --headingOne-size: 3rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+}

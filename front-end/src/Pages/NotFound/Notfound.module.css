@@ -1,0 +1,27 @@
+.notfoundContainer {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.contents {
+    display: flex;
+    font-size: 3rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+button {
+
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 50px;
+    transition: all ease-in-out .2s;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+}

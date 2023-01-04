@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
+import { Links } from "../../Data/Navlink";
 
 const Navigation = () => {
 	return (
@@ -17,98 +18,19 @@ const Navigation = () => {
 						</label>
 						<nav className={style.nav}>
 							<ul>
-								<li>
-									<NavLink
-										to={"/"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-											// css properties are in App.css
-										}}
-									>
-										Home
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/courses"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Courses
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/team"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Our Team
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/aboutUS"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										About Us
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/contact"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Contact
-									</NavLink>
-								</li>
-
-								<li>
-									<NavLink
-										to={"/gallery"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Gallery
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/verify"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Verify
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/vacancy"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Vacancy
-									</NavLink>
-								</li>
-								<li>
-									<NavLink
-										to={"/services"}
-										className={({ isActive }) => {
-											return "Link_Text_" + (isActive ? "Active" : "Unactive");
-										}}
-									>
-										Our Services
-									</NavLink>
-								</li>
+								{Links.map((Link) => (
+									<li key={Link.Key}>
+										<NavLink
+											to={Link.Linkto}
+											className={({ isActive }) => {
+												return "Link_Text_" + (isActive ? "Active" : "Unactive");
+												// css properties are in App.css
+											}}
+										>
+											{Link.LinkName}
+										</NavLink>
+									</li>
+								))}
 							</ul>
 						</nav>
 					</div>
