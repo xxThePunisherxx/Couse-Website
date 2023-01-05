@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import style from "./Carousel.module.css";
+import style from "./TestomonialCarousel.module.css";
 
-function Carousel({ images, EnableautoPlay, ShowItemFor }) {
+function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 	const [current, setCurrent] = useState(0);
 	const [autoPlay, setAutoPlay] = useState(EnableautoPlay);
 
@@ -27,34 +27,33 @@ function Carousel({ images, EnableautoPlay, ShowItemFor }) {
 	};
 
 	return (
-		<div
-			className={style.carousel}
-			onMouseEnter={() => {
-				if (EnableautoPlay === true) {
-					setAutoPlay(false);
-					clearTimeout(timeOut);
-				}
-			}}
-			onMouseLeave={() => {
-				if (EnableautoPlay === true) {
-					setAutoPlay(true);
-				} else setAutoPlay(false);
-			}}
-		>
-			<div className={style.carouselWrapper}>
+		<div className={style.carousel}>
+			<div
+				onMouseEnter={() => {
+					if (EnableautoPlay === true) {
+						setAutoPlay(false);
+						clearTimeout(timeOut);
+					}
+				}}
+				onMouseLeave={() => {
+					if (EnableautoPlay === true) {
+						setAutoPlay(true);
+					} else setAutoPlay(false);
+				}}
+				className={style.carouselWrapper}
+			>
 				{images.map((image, index) => {
 					return (
-						<>
-							<Link to={image.Link}>
-								<div key={index} className={index === current ? "carousel_card carousel_card-active" : "carousel_card"}>
-									<img className={style.cardImage} src={image.image} alt="" />
-									<div className={style.cardOverlay}>
-										<h2 className={style.cardTitle}>{image.title}</h2>
-									</div>
-									{/* <h1 className={style.bottomtext}>{image.title}</h1>//FIXME: */}
+						<Link to={image.Link}>
+							<div className={index === current ? "Testicarousel_card Testicarousel_card-active" : "Testicarousel_card"}>
+								<img className={style.cardImage} src={image.image} alt="" />
+
+								<div className={style.cardText}>
+									<h1>{image.Review}</h1>
+									<h2>{image.Name}</h2>
 								</div>
-							</Link>
-						</>
+							</div>
+						</Link>
 					);
 				})}
 				<div className={style.carouselArrowLeft} onClick={slideLeft}>
@@ -68,7 +67,7 @@ function Carousel({ images, EnableautoPlay, ShowItemFor }) {
 						return (
 							<div
 								key={index}
-								className={index === current ? "pagination_dot pagination_dot-active" : "pagination_dot"}
+								className={index === current ? "Testipagination_dot Testipagination_dot-active" : "Testipagination_dot"}
 								onClick={() => setCurrent(index)}
 							></div>
 						);
@@ -78,5 +77,4 @@ function Carousel({ images, EnableautoPlay, ShowItemFor }) {
 		</div>
 	);
 }
-
-export default Carousel;
+export default TestomonialCarousel;

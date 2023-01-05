@@ -8,12 +8,16 @@ import Comming from "./Pages/CommingSoon/Comming";
 import ClientsAll from "./Pages/Clients/ClientsAll";
 import NotFound from "./Pages/NotFound/NotFound";
 // import Admin from "./Pages/Admin/Admin";
+import Test from "./Pages/TestPage/Test";
+import ScrollToTop from "./Components/ScrollToTop";
+import IndividualCourse from "./Pages/IndividualCourse/IndividualCourse";
 
 function App() {
 	return (
 		<>
 			<BrowserRouter>
 				<Navigation />
+				<ScrollToTop />
 				<Routes>
 					<Route path="/" element={<Homepage />} />
 					<Route path="/courses" element={<Courses />} />
@@ -25,7 +29,9 @@ function App() {
 					<Route path="/career" element={<Comming />} />
 					<Route path="/services" element={<Comming />} />
 					<Route path="/allClients" element={<ClientsAll />} />
+					<Route path="/test" element={<Test />} />
 					<Route path="*" element={<NotFound />} />
+					<Route path="/course-view/:courseID" element={<IndividualCourse />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>{" "}

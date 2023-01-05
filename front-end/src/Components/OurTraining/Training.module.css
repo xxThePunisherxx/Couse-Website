@@ -7,7 +7,7 @@
     --gridH2-fontsize: 1rem;
     --buttonHover-bg: #0f5288;
     --button-border: black;
-    --enlarge: scale3d(1.01, 1.01, 1.01);
+    --enlarge: scale3d(1.1, 1.1, 1.1);
 }
 
 .TrainingContainer {
@@ -43,6 +43,10 @@
     transition: all ease-in .2s;
 }
 
+.Training img {
+    border-radius: 20px;
+}
+
 .Training:hover {
     cursor: pointer;
     border-radius: 15px;
@@ -61,33 +65,71 @@
 
 
 
-.Training button {
-    width: 150px;
-    padding: 10px;
-    margin-left: 15px;
-    border-radius: 30px;
-    font-size: 20px;
-    background-color: transparent;
-    transition: all ease-in .2s;
+/* .Training button {
+    margin: 0 auto;
+    width: 250px;
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    z-index: 1;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all ease-in 0.5s;
+    overflow: hidden;
+}
+
+.Training button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all ease-in 0.5s;
 }
 
 .Training button:hover {
-    background-color: var(--buttonHover-bg);
+    color: #e8e8e8;
 }
 
-.viewMore {
-    width: 350px;
-    padding: 10px;
-    margin-top: 80px;
-    margin-bottom: 100px;
-    border-radius: 30px;
-    font-size: 30px;
-    background-color: transparent;
-    transition: all ease-in .2s;
+.Training button:hover::before {
+    width: 100%;
+} */
+
+/* .Training button:hover {
+    background-color: var(--buttonHover-bg);
+} */
+
+.TrainingContainer button {
+    margin-top: 50px;
+    font-size: 2rem;
+    width: fit-content;
+    display: flex;
+    padding: 0.6em 1.1em;
+    gap: 0.4rem;
+    font-weight: bold;
+    border-radius: 20px;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    background: linear-gradient(45deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: background .3s ease-in-out;
+    color: #fff;
 }
 
-.viewMore:hover {
-    background-color: var(--buttonHover-bg);
+.TrainingContainer button:hover {
+    background-size: 320%;
+    background-position: right center;
+
+
 }
 
 @media screen and (max-width: 1669px) {

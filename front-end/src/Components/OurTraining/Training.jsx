@@ -12,17 +12,19 @@ const Training = () => {
 			</h1>
 			<div className={style.TrainingGrid}>
 				{SlicedTraining.map((item) => (
-					<div className={style.Training} key={item.key}>
-						<img src={item.imgURL} alt={item.Title} />
-						<h1>{item.Title}</h1>
-						<h2>Duration: {item.Duration}</h2>
-						<button>View Course</button>
-					</div>
+					<Link to={`course-view/${item.key}`} key={item.key}>
+						<div className={style.Training}>
+							<img src={item.imgURL} alt={item.Title} />
+							<h1>{item.Title}</h1>
+							<h2>Duration: {item.Duration}</h2>
+							{/* <button>View Course</button> */}
+						</div>
+					</Link>
 				))}
 			</div>
 
 			<Link to={"/courses"}>
-				<button className={style.viewMore}>View all courses</button>
+				<button>View all courses</button>
 			</Link>
 		</div>
 	);
