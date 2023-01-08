@@ -10,6 +10,7 @@ import Test from "./Pages/TestPage/Test";
 import ScrollToTop from "./Components/ScrollToTop";
 import IndividualCourse from "./Pages/IndividualCourse/IndividualCourse";
 import ClientLayout from "./Components/ClientLayout/ClientLayout";
+import AddCourse from "./Pages/Add courses/AddCourse";
 
 function App() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 					</Route>
 					<Route>
 						<Route path="/admin" element={<Admin />} />
+						<Route path="/add" element={<AddCourse />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
