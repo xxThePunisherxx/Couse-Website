@@ -5,6 +5,7 @@ import { CategoryList } from "../../Data/Categories";
 
 const AddCourse = () => {
 	const addRef = useRef();
+	const inputRef = useRef();
 	const handlesubmit = (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target);
