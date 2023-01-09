@@ -113,5 +113,12 @@
     border: none;
     width: 30px;
     border-radius: 5rem;
+}
 
+.AdminDash-Active h1 {
+    color: #0F5288;
+}
+
+.AdminDash-Inactive h1 {
+    color: white;
 }

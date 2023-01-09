@@ -1,10 +1,10 @@
 import React from "react";
-import style from "./AddCourse.module.css";
 import { useRef, useEffect } from "react";
+import style from "./UpdateCourse.module.css";
 import { CategoryList } from "../../Data/Categories";
 
-const AddCourse = () => {
-	const addRef = useRef();
+const RemoveCourse = () => {
+	const UpdateRef = useRef();
 
 	const handlesubmit = (e) => {
 		e.preventDefault();
@@ -13,19 +13,19 @@ const AddCourse = () => {
 		console.log(enterdData);
 	};
 	useEffect(() => {
-		addRef.current.focus();
+		UpdateRef.current.focus();
 	}, []);
 	return (
-		<div className={style.AddCourseWrapper}>
-			<div className={style.AddCourse}>
+		<div className={style.UpdateCourseWrapper}>
+			<div className={style.UpdateCourse}>
 				<div className={style.heading}>
 					<h1>
 						Add <span className={style.Headinghighlight}> new Course</span>
 					</h1>
 				</div>
 				<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
-					<h1>Course Name:</h1>
-					<input name="course_Name" type="text" placeholder="Course Name" required ref={addRef}></input>
+					<h1>Course Name :</h1>
+					<input name="course_Name" type="text" placeholder="Course Name" required ref={UpdateRef}></input>
 					<h1>Course Duration:</h1>
 					<input name="course_Duration" type="text" placeholder="Course Duration" required></input>
 					<h1>Course Description:</h1>
@@ -46,4 +46,4 @@ const AddCourse = () => {
 	);
 };
 
-export default AddCourse;
+export default RemoveCourse;

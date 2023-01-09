@@ -36,6 +36,7 @@ const Navigation = () => {
 								{Links.map((Link) => (
 									<li key={Link.Key}>
 										<NavLink
+											onClick={() => setNavtogled((Navtogled) => !Navtogled)}
 											to={Link.Linkto}
 											className={({ isActive }) => {
 												return "Link_Text_" + (isActive ? "Active" : "Unactive");

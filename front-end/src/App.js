@@ -11,6 +11,10 @@ import ScrollToTop from "./Components/ScrollToTop";
 import IndividualCourse from "./Pages/IndividualCourse/IndividualCourse";
 import ClientLayout from "./Components/ClientLayout/ClientLayout";
 import AddCourse from "./Pages/Add courses/AddCourse";
+import AdminLayout from "./Components/AdminLayout/AdminLayout";
+import RemoveCourse from "./Pages/Update course/UpdateCourse";
+import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
+import AdminSidebar from "./Components/Admin Side Bar/AdminSidebar";
 
 function App() {
 	return (
@@ -35,7 +39,12 @@ function App() {
 					</Route>
 					<Route>
 						<Route path="/admin" element={<Admin />} />
-						<Route path="/add" element={<AddCourse />} />
+						<Route path="/admin" element={<AdminLayout />}>
+							<Route path="addCourse" element={<AddCourse />} />
+							<Route path="dashboard" element={<AdminDashboard />} />
+							<Route path="update" element={<RemoveCourse />} />
+							<Route path="side" element={<AdminSidebar />} />
+						</Route>
 					</Route>
 				</Routes>
 			</BrowserRouter>
