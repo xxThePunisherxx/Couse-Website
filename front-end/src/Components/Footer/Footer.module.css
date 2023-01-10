@@ -37,6 +37,10 @@
     padding-bottom: 1rem;
 }
 
+.Logo_Container h2 {
+    cursor: pointer;
+}
+
 .Logo_Container img {
     margin-bottom: 20px;
 }
@@ -88,4 +92,8 @@
 
 .Social_links a img {
     height: 50px;
+}
+
+.TelLink a {
+    color: white;
 }

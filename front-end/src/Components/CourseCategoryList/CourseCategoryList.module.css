@@ -1,0 +1,81 @@
+.Categories_Wrapper {
+    margin-top: 50px;
+    display: grid;
+    justify-items: center;
+}
+
+.Categories_Wrapper h1 {
+    font-size: 5rem;
+    padding: 5rem;
+    text-align: center;
+}
+
+.Categories_Grid {
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+
+}
+
+.Categories_Card h1 {
+    font-size: 1.5rem;
+    padding: 0rem;
+}
+
+.Categories_Card {
+
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: rgba(119, 122, 122, 0.228);
+
+}
+
+.Categories_Card button {
+    border: none;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color ease .2s;
+
+}
+
+.Edit_Btn:hover {
+    color: green;
+}
+
+.Delete_Btn:hover {
+    color: red;
+}
+
+.new {
+
+    font-size: 25px;
+    width: fit-content;
+    display: flex;
+    padding: 0.5em 1.1em;
+    gap: 0.4rem;
+    font-weight: bold;
+    border-radius: 20px;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    /* background: linear-gradient(15deg, #4D194D, #3E1F47, #312244, #272640, #212F45, #1B3A4B, #144552, #0B525B, #065A60, #006466) no-repeat; */
+    background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: background .3s ease;
+    color: #fff;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 16px;
+    border: none;
+    margin: 50px auto;
+
+}
+
+.new:hover {
+    transform: scale(1.01);
+    background-size: 320%;
+    background-position: right center;
+}

@@ -12,7 +12,7 @@
 .AddCourseWrapper {
     display: grid;
     place-items: center;
-    height: 100vh;
+
 }
 
 .AddCourse {
@@ -67,7 +67,8 @@
     cursor: pointer;
 }
 
-.FormWrappper input:focus {
+.FormWrappper input:focus,
+.FormWrappper textarea:focus {
     background-color: #b9b9b9;
 }
 

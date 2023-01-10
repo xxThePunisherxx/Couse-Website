@@ -46,6 +46,7 @@ a {
     font-weight: bold;
     border-radius: 20px;
     text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    /* background: linear-gradient(15deg, #4D194D, #3E1F47, #312244, #272640, #212F45, #1B3A4B, #144552, #0B525B, #065A60, #006466) no-repeat; */
     background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
     background-size: 300%;
     background-position: left center;

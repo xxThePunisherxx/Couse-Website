@@ -10,7 +10,7 @@ const AdminSidebar = () => {
 		<div className={style.AdminSidebarWrapper}>
 			<div className={style.AdminSidebar}>
 				<div className={style.Logo}>
-					<h1>Logo and image</h1>
+					<h1>Logo image</h1>
 				</div>
 				<div className={style.DashboardLinks}>
 					<NavLink

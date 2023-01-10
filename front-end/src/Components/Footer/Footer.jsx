@@ -8,8 +8,17 @@ const Footer = () => {
 			<div className={style.Footer_Container}>
 				<div className={style.Logo_Container}>
 					<img src="Img/Logo.png" alt="Company Logo" />
-					<h2>Email: someone@something.com</h2>
-					<h2>Phone: 01-1234567890, 01-0987654321</h2>
+					<h2
+						onClick={(e) => {
+							window.location.href = "mailto:test@gmail.com";
+							e.preventDefault();
+						}}
+					>
+						Email: someone@something.com
+					</h2>
+					<h2 className={style.TelLink}>
+						<a href="tel:9876543210">Phone: 01-1234567890</a>
+					</h2>
 				</div>
 				<div className={style.Link_Containers}>
 					<h1>Quick Links</h1>

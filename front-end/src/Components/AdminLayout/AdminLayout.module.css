@@ -1,4 +1,4 @@
 .AdminLayout {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 350px 1fr;
 }

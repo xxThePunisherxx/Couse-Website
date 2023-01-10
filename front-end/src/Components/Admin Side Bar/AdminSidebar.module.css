@@ -1,6 +1,7 @@
 .AdminSidebarWrapper {
     display: flex;
     justify-content: flex-start;
+    height: 100%;
 }
 
 .AdminSidebar {
@@ -8,6 +9,9 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.87);
     color: white;
+    margin-right: 50px;
+    position: sticky;
+    top: 0;
 
 }
 
