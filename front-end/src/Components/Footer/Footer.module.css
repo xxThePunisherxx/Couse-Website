@@ -3,11 +3,6 @@
 }
 
 
-@media screen and (max-width: 412px) {
-    :root {
-        --grid-cols: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
 
 
 .Footer_Container {
@@ -42,6 +37,7 @@
 }
 
 .Logo_Container img {
+    width: 300px;
     margin-bottom: 20px;
 }
 
@@ -96,4 +92,15 @@
 
 .TelLink a {
     color: white;
+}
+
+@media screen and (max-width: 412px) {
+    :root {
+        --grid-cols: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .Logo_Container img {
+        width: 250px;
+        margin-bottom: 20px;
+    }
 }

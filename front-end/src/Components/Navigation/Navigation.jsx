@@ -9,7 +9,6 @@ const Navigation = () => {
 		let handler = (event) => {
 			if (!navRef.current.contains(event.target)) {
 				setNavtogled(false);
-				console.log(Navtogled);
 			}
 		};
 		document.addEventListener("mousedown", handler);

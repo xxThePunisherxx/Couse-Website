@@ -1,13 +1,14 @@
 import React from "react";
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
+import Image from "../../assets/Logo.png";
 
 const Footer = () => {
 	return (
 		<div>
 			<div className={style.Footer_Container}>
 				<div className={style.Logo_Container}>
-					<img src="Img/Logo.png" alt="Company Logo" />
+					<img src={Image} alt="Company Logo" />
 					<h2
 						onClick={(e) => {
 							window.location.href = "mailto:test@gmail.com";

@@ -8,6 +8,7 @@
     --buttonHover-bg: #0f5288;
     --button-border: black;
     --enlarge: scale3d(1.1, 1.1, 1.1);
+    --grid-gap: 20px;
 }
 
 .TrainingContainer {
@@ -21,8 +22,9 @@
 .TrainingGrid {
     display: grid;
     grid-template-columns: var(--gridColumns);
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
+
 
 
 }
@@ -129,6 +131,19 @@
     background-size: 320%;
     background-position: right center;
 
+
+}
+
+@media screen and (max-width: 2000px) {
+    :root {
+        --gridColumns: repeat(5, 400px);
+        --headingOne-size: 4rem;
+    }
+
+    .Training img {
+        width: 100%;
+        border-radius: 10px;
+    }
 
 }
 

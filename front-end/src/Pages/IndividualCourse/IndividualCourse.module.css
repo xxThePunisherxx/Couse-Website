@@ -1,0 +1,45 @@
+.Training_header,
+.Training_DescriptionWrapper {
+    margin: 0 auto;
+    width: 60%;
+    padding: 5rem;
+}
+
+.Training_header h1 {
+    font-size: 3rem;
+}
+
+.Training_header h2 {
+    font-size: 2rem;
+}
+
+.training_header_btn {
+    padding: 1rem;
+}
+
+.second {
+    margin-left: 50px;
+}
+
+.training_header_btn button {
+    font-size: 2rem;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all ease .2s;
+}
+
+.Training_header button:hover {
+    color: white;
+    background-color: black;
+}
+
+.Training_header_sub {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

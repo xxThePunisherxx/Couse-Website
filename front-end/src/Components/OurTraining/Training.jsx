@@ -1,10 +1,31 @@
 import React from "react";
 import style from "./Training.module.css";
 import { Link } from "react-router-dom";
-import { TrainingData } from "../../Data/Trainings";
-
+// import { TrainingData } from "../../Data/Trainings";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const Training = () => {
-	let SlicedTraining = TrainingData.slice(0, 12);
+	const [trainingData, setTrainingData] = useState([{}]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				let response = await axios.get("http://localhost:8080/api/training");
+				setTrainingData(response.data);
+				console.log(response.data);
+			} catch (error) {
+				if (error.response) {
+					console.log(error.response.status);
+					console.log(error.response.headers);
+				} else {
+					console.log(`Error: ${error.message}`);
+				}
+			}
+		};
+		fetchData();
+	}, []);
+	let SlicedTraining = trainingData.slice(0, 12);
+	console.log(trainingData);
 	return (
 		<div className={style.TrainingContainer}>
 			<h1 className={style.MainHeading}>
@@ -12,12 +33,11 @@ const Training = () => {
 			</h1>
 			<div className={style.TrainingGrid}>
 				{SlicedTraining.map((item) => (
-					<Link to={`course-view/${item.key}`} key={item.key}>
+					<Link to={`course-view/${item._id}`} key={item._id}>
 						<div className={style.Training}>
-							<img src={item.imgURL} alt={item.Title} />
-							<h1>{item.Title}</h1>
-							<h2>Duration: {item.Duration}</h2>
-							{/* <button>View Course</button> */}
+							<img src={item.image} alt={item.Title} />
+							<h1>{item.title}</h1>
+							<h2>Duration: {item.duration}</h2>
 						</div>
 					</Link>
 				))}

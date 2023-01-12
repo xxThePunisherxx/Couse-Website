@@ -1,8 +1,10 @@
 :root {
-    --navBar-background: white;
-    --smallScreenNav-border: black;
-    --hamburger-color: #0f5288;
-    --Linkcolor-hover: #0f5288;
+    --navBar-background: black;
+    --smallScreenNav-border: white;
+    --hamburger-color: yellow;
+    /* --hamburger-color: #0f5288; */
+    /* --Linkcolor-hover: #0f5288; */
+    --Linkcolor-hover: yellow;
 }
 
 a {
@@ -16,12 +18,14 @@ ul {
 
 .header {
     background-color: var(--navBar-background);
-    padding: 12px 0;
+    /* border-bottom: .5px solid var(--smallScreenNav-border); */
     position: relative;
+    padding: 20px;
+
 }
 
 .Navigation_Container {
-    max-width: 1900px;
+
     margin: auto;
 }
 

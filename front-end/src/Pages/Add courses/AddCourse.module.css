@@ -4,7 +4,6 @@
     --main-Heading2: 1.5rem;
     --main-Heading-highlight: #0f5288;
     --form-input-fontSize: 2rem;
-
     --formLabel-fontSize: 2rem;
     --submit-fontSize: 2rem;
 }
@@ -52,10 +51,12 @@
     font-size: var(--formLabel-fontSize);
 }
 
-.FormWrappper option {
+/* .FormWrappper option {
     font-size: var(--form-input-fontSize);
 
-}
+
+
+} */
 
 .FormWrappper select {
     font-size: var(--form-input-fontSize);

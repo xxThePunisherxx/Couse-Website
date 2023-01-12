@@ -15,6 +15,7 @@ import AdminLayout from "./Components/AdminLayout/AdminLayout";
 import RemoveCourse from "./Pages/Update course/UpdateCourse";
 import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
 import AdminSidebar from "./Components/Admin Side Bar/AdminSidebar";
+import EnrollForm from "./Components/Enroll Form/EnrollForm";
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 					<Route path="/" element={<ClientLayout />}>
 						<Route path="/" element={<Homepage />} />
 						<Route path="/courses" element={<Courses />} />
+						<Route path="/enroll" element={<EnrollForm />} />
 						<Route path="/team" element={<Comming />} />
 						<Route path="/aboutUS" element={<Comming />} />
 						<Route path="contact" element={<Comming />} />
