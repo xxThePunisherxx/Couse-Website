@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { TrainingData } from "../../Data/Trainings";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import uuid from "react-uuid";
 const Training = () => {
 	const [trainingData, setTrainingData] = useState([{}]);
 
@@ -33,7 +34,7 @@ const Training = () => {
 			</h1>
 			<div className={style.TrainingGrid}>
 				{SlicedTraining.map((item) => (
-					<Link to={`course-view/${item._id}`} key={item._id}>
+					<Link to={`course-view/${item._id}`} key={uuid()}>
 						<div className={style.Training}>
 							<img src={item.image} alt={item.Title} />
 							<h1>{item.title}</h1>

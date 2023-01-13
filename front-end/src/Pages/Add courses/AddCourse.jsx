@@ -3,6 +3,7 @@ import style from "./AddCourse.module.css";
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import uuid from "react-uuid";
 
 const AddCourse = () => {
 	const addRef = useRef();
@@ -10,6 +11,7 @@ const AddCourse = () => {
 	const [trainingCategory, setTrainingCategory] = useState([{}]);
 
 	useEffect(() => {
+		//get list of all training categories from  the db
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
@@ -26,14 +28,6 @@ const AddCourse = () => {
 		fetchData();
 	}, []);
 
-	// const postData = async () => {
-	// 	try {
-	// 		const response = await axios.post("http://localhost:8080/api/training/add",);
-	// 	} catch (error) {
-
-	// 	}
-	// }
-
 	console.log(trainingCategory);
 	const handlesubmit = async (e) => {
 		e.preventDefault();
@@ -48,11 +42,14 @@ const AddCourse = () => {
 			image: enterdData.course_Image,
 			rating: enterdData.course_Rating,
 			category: enterdData.dropdown,
+			career: enterdData.course_careerPath,
 		};
 		try {
 			const response = await axios.post("http://localhost:8080/api/training/add", postData);
-			if (response.status != 201) {
-				navigate("/asdadadad");
+			if (response.status === 201) {
+				setTimeout(() => {
+					navigate("/admin/dashboard");
+				}, 1000);
 			}
 		} catch (error) {}
 	};
@@ -80,11 +77,13 @@ const AddCourse = () => {
 					<input name="course_Priority" type="number" placeholder="Course Priority" required></input>
 					<h1>Rating</h1>
 					<input name="course_Rating" type="number" placeholder="Course Rating" required></input>
+					<h1>Career Path</h1>
+					<input name="course_careerPath" type="text" placeholder="Career path" required></input>
 					<h1>Course Category:</h1>
 					<select name="dropdown">
 						<option>Select Category</option>
 						{trainingCategory.map((Category) => (
-							<option key={Category._id} value={Category._id}>
+							<option key={uuid()} value={Category._id}>
 								{Category.course_type}
 							</option>
 						))}

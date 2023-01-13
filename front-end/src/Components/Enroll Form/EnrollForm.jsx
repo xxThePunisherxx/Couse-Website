@@ -1,7 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
 import style from "./EnrollForm.module.css";
-import "react-phone-number-input/style.css";
 
 import { CategoryList } from "../../Data/Categories";
 

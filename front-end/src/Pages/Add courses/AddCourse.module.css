@@ -51,13 +51,6 @@
     font-size: var(--formLabel-fontSize);
 }
 
-/* .FormWrappper option {
-    font-size: var(--form-input-fontSize);
-
-
-
-} */
-
 .FormWrappper select {
     font-size: var(--form-input-fontSize);
     border-radius: 5px;

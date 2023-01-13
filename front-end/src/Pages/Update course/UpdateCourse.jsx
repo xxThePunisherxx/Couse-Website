@@ -1,16 +1,85 @@
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import style from "./UpdateCourse.module.css";
-import { CategoryList } from "../../Data/Categories";
+import { useParams } from "react-router-dom";
+
+import axios from "axios";
+import uuid from "react-uuid";
+import { useNavigate } from "react-router-dom";
 
 const RemoveCourse = () => {
+	const navigate = useNavigate();
 	const UpdateRef = useRef();
+	const { courseID } = useParams();
+	const [IndividualtrainingData, setIndividualTrainingData] = useState([{}]); //  data feilds of individual course
+	const [IndividualtrainingDataCat, setIndividualTrainingCat] = useState(""); // just contains course category of fetched course.
+	const [trainingCategory, setTrainingCategory] = useState([{}]); // list of all training categories.
 
-	const handlesubmit = (e) => {
+	useEffect(() => {
+		const fetchData = async () => {
+			// get request to get pre-update value of the course.
+			try {
+				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
+				setIndividualTrainingData(response.data); //  data feilds of individual course
+				setIndividualTrainingCat(response.data.category); // category object of course being edited
+			} catch (error) {
+				if (error.response) {
+					console.log(error.response.status);
+					console.log(error.response.headers);
+				} else {
+					console.log(`Error: ${error.message}`);
+				}
+			}
+		};
+		fetchData();
+	}, [courseID]);
+
+	useEffect(() => {
+		//get list of all training categories from  the db
+		const fetchData = async () => {
+			try {
+				let response = await axios.get("http://localhost:8080/api/category");
+				setTrainingCategory(response.data);
+			} catch (error) {
+				if (error.response) {
+					console.log(error.response.status);
+					console.log(error.response.headers);
+				} else {
+					console.log(`Error: ${error.message}`);
+				}
+			}
+		};
+		fetchData();
+	}, []);
+	console.log(trainingCategory);
+
+	const handlesubmit = async (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target);
 		let enterdData = Object.fromEntries(data.entries());
 		console.log(enterdData);
+		const postData = {
+			title: enterdData.course_Name,
+			description: enterdData.course_Description,
+			duration: enterdData.course_Duration,
+			priority: enterdData.course_Priority,
+			image: enterdData.course_Image,
+			rating: enterdData.course_Rating,
+			category: enterdData.dropdown,
+			career: enterdData.course_careerPath,
+		};
+		try {
+			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData);
+			// if (response.status === 201) {
+			// 	setTimeout(() => {
+			// 		navigate("/admin/dashboard");
+			// 	}, 1000);
+			// }
+			console.log(response);
+			setTimeout(() => {
+				navigate("/admin/dashboard");
+			}, 1000);
+		} catch (error) {}
 	};
 	useEffect(() => {
 		UpdateRef.current.focus();
@@ -20,26 +89,51 @@ const RemoveCourse = () => {
 			<div className={style.UpdateCourse}>
 				<div className={style.heading}>
 					<h1>
-						Add <span className={style.Headinghighlight}> new Course</span>
+						Update <span className={style.Headinghighlight}>Course</span>
 					</h1>
 				</div>
 				<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
 					<h1>Course Name :</h1>
-					<input name="course_Name" type="text" placeholder="Course Name" required ref={UpdateRef}></input>
+					<input
+						name="course_Name"
+						defaultValue={IndividualtrainingData.title}
+						type="text"
+						placeholder="Course Name"
+						required
+						ref={UpdateRef}
+					></input>
 					<h1>Course Duration:</h1>
-					<input name="course_Duration" type="text" placeholder="Course Duration" required></input>
+					<input name="course_Duration" defaultValue={IndividualtrainingData.duration} type="text" placeholder="Course Duration" required></input>
 					<h1>Course Description:</h1>
-					<textarea name="course_Description" type="text" placeholder="Course Description" cols={30} rows={5} required></textarea>
+					<textarea
+						name="course_Description"
+						defaultValue={IndividualtrainingData.description}
+						type="text"
+						placeholder="Course Description"
+						cols={30}
+						rows={5}
+						required
+					></textarea>
 					<h1>Course Image:</h1>
-					<input name="course_Image" type="text" placeholder="Course Image URL" required></input>
+					<input name="course_Image" defaultValue={IndividualtrainingData.image} type="text" placeholder="Course Image URL" required></input>
+					<h1>Course Priority:</h1>
+					<input name="course_Priority" defaultValue={IndividualtrainingData.priority} type="number" placeholder="Course Priority" required></input>
+					<h1>Rating</h1>
+					<input name="course_Rating" defaultValue={IndividualtrainingData.rating} type="number" placeholder="Course Rating" required></input>
+					<h1>Career Path</h1>
+					<input name="course_careerPath" defaultValue={IndividualtrainingData.career} type="text" placeholder="Career path" required></input>
 					<h1>Course Category:</h1>
 					<select name="dropdown">
-						<option>Select Category</option>
-						{CategoryList.map((Category) => (
-							<option key={Category.key}>{Category.value}</option>
+						{/* preupdate training course category. */}
+						<option value={IndividualtrainingDataCat._id}>{IndividualtrainingDataCat.course_type}</option>
+						{/* list of all possible categories. */}
+						{trainingCategory.map((Category) => (
+							<option key={uuid()} value={Category._id}>
+								{Category.course_type}
+							</option>
 						))}
 					</select>
-					<button className={style.Spantwo}>Create</button>
+					<button className={style.Spantwo}>Update</button>
 				</form>
 			</div>
 		</div>
