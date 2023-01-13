@@ -61,7 +61,7 @@ const AddCourse = () => {
 			<div className={style.AddCourse}>
 				<div className={style.heading}>
 					<h1>
-						Add <span className={style.Headinghighlight}> new Course</span>
+						Add <span className={style.Headinghighlight}> Course</span>
 					</h1>
 				</div>
 				<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
