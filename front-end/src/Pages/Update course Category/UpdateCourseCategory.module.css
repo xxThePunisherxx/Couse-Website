@@ -8,12 +8,13 @@
     --submit-fontSize: 2rem;
 }
 
-.UpdateCourseWrapper {
+.UpdateCourseCategoryWrapper {
     display: grid;
     place-items: center;
+
 }
 
-.UpdateCourse {
+.UpdateCourseCategory {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +29,7 @@
     color: var(--main-Heading-highlight);
 }
 
-.UpdateCourse form {
+.UpdateCourseCategory form {
     padding: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,8 +38,8 @@
     align-items: center;
 }
 
-.FormWrappper input,
-.FormWrappper textarea {
+.FormWrapper input,
+.FormWrapper textarea {
     font-size: var(--form-input-fontSize);
     border-radius: 5px;
     border: 2px solid black;
@@ -47,11 +48,12 @@
     border-radius: 20px;
 }
 
-.FormWrappper h1 {
+.FormWrapper h1 {
     font-size: var(--formLabel-fontSize);
+    /* text-align: center; */
 }
 
-.FormWrappper select {
+.FormWrapper select {
     font-size: var(--form-input-fontSize);
     border-radius: 5px;
     border: 2px solid black;
@@ -61,12 +63,12 @@
     cursor: pointer;
 }
 
-.FormWrappper input:focus,
-.FormWrappper textarea:focus {
+.FormWrapper input:focus,
+.FormWrapper textarea:focus {
     background-color: #b9b9b9;
 }
 
-.FormWrappper button {
+.FormWrapper button {
     cursor: pointer;
     margin: 0 auto;
     margin-top: 20px;
@@ -86,7 +88,7 @@
 
 }
 
-.FormWrappper button:hover {
+.FormWrapper button:hover {
     background-size: 320%;
     background-position: right center;
 }

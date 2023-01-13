@@ -5,6 +5,7 @@ import { MdModeEditOutline, MdDeleteSweep } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import uuid from "react-uuid";
+import { Link } from "react-router-dom";
 
 const CourseCategoryList = () => {
 	const [trainingCategoryList, setTrainingCategoryList] = useState([{}]);
@@ -47,9 +48,11 @@ const CourseCategoryList = () => {
 				{trainingCategoryList.map((category) => (
 					<div key={uuid()} className={style.Categories_Card}>
 						<h1>{category.course_type}</h1>
-						<button className={style.Edit_Btn}>
-							<MdModeEditOutline />
-						</button>
+						<Link to={`/admin/updateCourseCategory/${category._id}`}>
+							<button className={style.Edit_Btn}>
+								<MdModeEditOutline />
+							</button>
+						</Link>
 						<button className={style.Delete_Btn} onClick={(e) => handleDelete(category._id, e)}>
 							<MdDeleteSweep />
 						</button>

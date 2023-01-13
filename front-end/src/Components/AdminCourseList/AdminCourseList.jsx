@@ -52,7 +52,7 @@ const AdminCourseList = () => {
 								<h2>{Training.duration}</h2>
 							</div>
 							<div className={style.AdminCourseCard_Btn}>
-								<Link to={`/admin/update/${Training._id}`}>
+								<Link to={`/admin/updateCourse/${Training._id}`}>
 									<button className={style.Edit_Btn}>
 										<MdModeEditOutline />
 									</button>
