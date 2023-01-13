@@ -27,6 +27,7 @@ const AddCourse = () => {
 		};
 		fetchData();
 	}, []);
+	console.log(setTrainingCategory);
 
 	console.log(trainingCategory);
 	const handlesubmit = async (e) => {

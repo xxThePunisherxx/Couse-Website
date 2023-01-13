@@ -38,7 +38,7 @@ const AdminCourseList = () => {
 			console.log("Error" + error.message);
 		}
 	};
-	console.log(trainingData);
+	// console.log(trainingData);
 	return (
 		<div>
 			<div className={style.allCourseWrapper}>
