@@ -37,9 +37,9 @@
 }
 
 .Training_header_sub {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
 }

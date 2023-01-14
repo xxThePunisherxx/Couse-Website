@@ -36,14 +36,14 @@ const IndividualCourse = () => {
 			<div className={style.Training_header}>
 				{/* //TODO: add banner image bg */}
 				<h1>{IndividualtrainingData.title}</h1>
-				<h2>Short description</h2>
+				<h2>Short description: still left to be implemented on backend</h2>
 				<div className={style.Training_header_sub}>
 					<h2>
 						<FaClock /> &nbsp; Duration: {IndividualtrainingData.duration} months
 					</h2>
 
 					<h2>
-						<FaUserTie /> &nbsp; Career:
+						<FaUserTie /> &nbsp; Career: {IndividualtrainingData.career}
 					</h2>
 				</div>
 				<div className={style.training_header_btn}>

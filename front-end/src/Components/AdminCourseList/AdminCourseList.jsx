@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 
 const AdminCourseList = () => {
 	const [trainingData, setTrainingData] = useState([{}]);
+	const [showAreYouSureVisible, setAreYouSureVisible] = useState(false);
+	const [delID, setdelID] = useState(0);
+	const [delTitle, setdelTitle] = useState("");
+	const [ConformFormInput, setConformFormInput] = useState("");
+	const [ConformFormButtonDisabled, setConformFormButtonDisabled] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -25,9 +30,22 @@ const AdminCourseList = () => {
 		};
 		fetchData();
 	}, []);
-	const handleDelete = async (id, e) => {
+	useEffect(() => {
+		if (delTitle.length !== 0 && ConformFormInput === delTitle) {
+			setConformFormButtonDisabled(false);
+		} else {
+			setConformFormButtonDisabled(true);
+		}
+	}, [ConformFormInput, delTitle]);
+
+	const handleDeleteConfirmation = (id, title) => {
+		setdelID(id);
+		setAreYouSureVisible(true);
+		setdelTitle(title);
+	};
+	const handleConfirmedDelete = async (id, e) => {
 		try {
-			let response = await axios.delete("http://localhost:8080/api/training/delete/" + id);
+			let response = await axios.delete("http://localhost:8080/api/training/delete/" + delID);
 			console.log(response.data);
 			if (response.status === 201) {
 				setTimeout(() => {
@@ -38,9 +56,9 @@ const AdminCourseList = () => {
 			console.log("Error" + error.message);
 		}
 	};
-	// console.log(trainingData);
+	// console.log(ConformFormInput);
 	return (
-		<div>
+		<>
 			<div className={style.allCourseWrapper}>
 				<h1>Active Courses</h1>
 				<div className={style.allCourseGrid}>
@@ -57,7 +75,7 @@ const AdminCourseList = () => {
 										<MdModeEditOutline />
 									</button>
 								</Link>
-								<button className={style.Delete_Btn} onClick={(e) => handleDelete(Training._id, e)}>
+								<button className={style.Delete_Btn} onClick={(e) => handleDeleteConfirmation(Training._id, Training.title)}>
 									<MdDeleteSweep />
 								</button>
 							</div>
@@ -66,7 +84,34 @@ const AdminCourseList = () => {
 				</div>
 				<button className={style.new}>View All</button>
 			</div>
-		</div>
+			{showAreYouSureVisible && (
+				<div className={style.areYouSureAboutThat}>
+					<div className={style.confirmationItems}>
+						<h1>This is a dangerous action. Are you sure about this?</h1>
+						<form className={style.confirmationForm}>
+							<h1>
+								Please type "
+								<span className={style.inputHightlight}>
+									<h1>{delTitle}</h1>
+								</span>
+								" below to continue
+							</h1>
+							<input
+								type="text"
+								placeholder=""
+								value={ConformFormInput}
+								onChange={(e) => {
+									setConformFormInput(e.target.value);
+								}}
+							/>
+							<button disabled={ConformFormButtonDisabled} onClick={handleConfirmedDelete}>
+								Delete
+							</button>
+						</form>
+					</div>
+				</div>
+			)}
+		</>
 	);
 };
 
