@@ -9,6 +9,7 @@ const AddCourse = () => {
 	const addRef = useRef();
 	const navigate = useNavigate();
 	const [trainingCategory, setTrainingCategory] = useState([{}]);
+	const [showSuccess, setShowSuccess] = useState(false);
 
 	useEffect(() => {
 		//get list of all training categories from  the db
@@ -27,9 +28,7 @@ const AddCourse = () => {
 		};
 		fetchData();
 	}, []);
-	console.log(setTrainingCategory);
 
-	console.log(trainingCategory);
 	const handlesubmit = async (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target);
@@ -48,9 +47,14 @@ const AddCourse = () => {
 		try {
 			const response = await axios.post("http://localhost:8080/api/training/add", postData);
 			if (response.status === 201) {
+				setShowSuccess(true);
+
 				setTimeout(() => {
+					setTimeout(() => {
+						setShowSuccess(false);
+					}, 1000);
 					navigate("/admin/dashboard");
-				}, 1000);
+				}, 2000);
 			}
 		} catch (error) {}
 	};
@@ -58,41 +62,48 @@ const AddCourse = () => {
 		addRef.current.focus();
 	}, []);
 	return (
-		<div className={style.AddCourseWrapper}>
-			<div className={style.AddCourse}>
-				<div className={style.heading}>
-					<h1>
-						Add <span className={style.Headinghighlight}> Course</span>
-					</h1>
+		<>
+			<div className={style.AddCourseWrapper}>
+				<div className={style.AddCourse}>
+					<div className={style.heading}>
+						<h1>
+							Add <span className={style.Headinghighlight}> Course</span>
+						</h1>
+					</div>
+					<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
+						<h1>Course Name:</h1>
+						<input name="course_Name" type="text" placeholder="Course Name" required ref={addRef}></input>
+						<h1>Course Duration:</h1>
+						<input name="course_Duration" type="text" placeholder="Course Duration" required></input>
+						<h1>Course Description:</h1>
+						<textarea name="course_Description" type="text" placeholder="Course Description" cols={30} rows={5} required></textarea>
+						<h1>Course Image:</h1>
+						<input name="course_Image" type="text" placeholder="Course Image URL" required></input>
+						<h1>Course Priority:</h1>
+						<input name="course_Priority" type="number" placeholder="Course Priority" required></input>
+						<h1>Rating</h1>
+						<input name="course_Rating" type="number" placeholder="Course Rating" required></input>
+						<h1>Career Path</h1>
+						<input name="course_careerPath" type="text" placeholder="Career path" required></input>
+						<h1>Course Category:</h1>
+						<select name="dropdown">
+							<option>Select Category</option>
+							{trainingCategory.map((Category) => (
+								<option key={uuid()} value={Category._id}>
+									{Category.course_type}
+								</option>
+							))}
+						</select>
+						<button className={style.Spantwo}>Create</button>
+					</form>
 				</div>
-				<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
-					<h1>Course Name:</h1>
-					<input name="course_Name" type="text" placeholder="Course Name" required ref={addRef}></input>
-					<h1>Course Duration:</h1>
-					<input name="course_Duration" type="text" placeholder="Course Duration" required></input>
-					<h1>Course Description:</h1>
-					<textarea name="course_Description" type="text" placeholder="Course Description" cols={30} rows={5} required></textarea>
-					<h1>Course Image:</h1>
-					<input name="course_Image" type="text" placeholder="Course Image URL" required></input>
-					<h1>Course Priority:</h1>
-					<input name="course_Priority" type="number" placeholder="Course Priority" required></input>
-					<h1>Rating</h1>
-					<input name="course_Rating" type="number" placeholder="Course Rating" required></input>
-					<h1>Career Path</h1>
-					<input name="course_careerPath" type="text" placeholder="Career path" required></input>
-					<h1>Course Category:</h1>
-					<select name="dropdown">
-						<option>Select Category</option>
-						{trainingCategory.map((Category) => (
-							<option key={uuid()} value={Category._id}>
-								{Category.course_type}
-							</option>
-						))}
-					</select>
-					<button className={style.Spantwo}>Create</button>
-				</form>
 			</div>
-		</div>
+			{showSuccess && (
+				<div className={style.successBoard}>
+					<h1>Course Added succesfully</h1>
+				</div>
+			)}
+		</>
 	);
 };
 
