@@ -5,8 +5,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import uuid from "react-uuid";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const AdminCourseList = () => {
+	const delRef = useRef();
+	useEffect(() => {
+		let handler = (event) => {
+			if (!delRef.current.contains(event.target)) {
+				setAreYouSureVisible(false);
+			}
+		};
+		document.addEventListener("mousedown", handler);
+		return () => {
+			document.removeEventListener("mousedown", handler);
+		};
+	});
 	const [trainingData, setTrainingData] = useState([{}]);
 	const [showAreYouSureVisible, setAreYouSureVisible] = useState(false);
 	const [delID, setdelID] = useState(0);
@@ -82,10 +95,12 @@ const AdminCourseList = () => {
 						</div>
 					))}
 				</div>
-				<button className={style.new}>View All</button>
+				<Link to={"/admin/allCourse"}>
+					<button className={style.new}>View All</button>
+				</Link>
 			</div>
 			{showAreYouSureVisible && (
-				<div className={style.areYouSureAboutThat}>
+				<div className={style.areYouSureAboutThat} ref={delRef}>
 					<div className={style.confirmationItems}>
 						<h1>This is a dangerous action. Are you sure about this?</h1>
 						<form className={style.confirmationForm}>

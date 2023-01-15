@@ -19,6 +19,7 @@ import EnrollForm from "./Components/Enroll Form/EnrollForm";
 import Updatecourse from "./Pages/Update course/UpdateCourse";
 import AddCourseCate from "./Pages/Add Course Category/AddCourseCate";
 import UpdateCourseCategory from "./Pages/Update course Category/UpdateCourseCategory";
+import AdminCourseListPage from "./Pages/Admin Course Page/AdminCourseListPage";
 
 function App() {
 	return (
@@ -50,6 +51,7 @@ function App() {
 							<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
 							<Route path="dashboard" element={<AdminDashboard />} />
 							<Route path="addCategory" element={<AddCourseCate />} />
+							<Route path="allCourse" element={<AdminCourseListPage />} />
 							{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
 						</Route>
 					</Route>

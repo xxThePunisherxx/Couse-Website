@@ -142,13 +142,21 @@
     font-size: 1.5rem;
     padding: 1rem;
     border-radius: 20px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-color: transparent;
     transition: all ease-in .2s;
-
+    color: red;
+    background-color: rgba(128, 128, 128, 0.782);
 }
 
 .confirmationForm button:hover {
     background-color: black;
     color: white;
+}
+
+.confirmationForm button:disabled {
+    background-color: rgba(128, 128, 128, 0.051);
+    color: red;
+    border: none;
+    pointer-events: none;
 }
