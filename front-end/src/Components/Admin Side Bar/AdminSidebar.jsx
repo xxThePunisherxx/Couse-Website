@@ -4,13 +4,14 @@ import style from "./AdminSidebar.module.css";
 import { RxDashboard } from "react-icons/rx";
 import { AiOutlineAppstoreAdd, AiFillHome } from "react-icons/ai";
 import { IoPersonAddOutline } from "react-icons/io5";
+import Logo from "../../assets/Logo.png";
 
 const AdminSidebar = () => {
 	return (
 		<div className={style.AdminSidebarWrapper}>
 			<div className={style.AdminSidebar}>
 				<div className={style.Logo}>
-					<h1>Logo image</h1>
+					<img src={Logo} alt="" />
 				</div>
 				<div className={style.DashboardLinks}>
 					<NavLink

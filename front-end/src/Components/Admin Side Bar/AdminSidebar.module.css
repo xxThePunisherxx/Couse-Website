@@ -20,6 +20,10 @@
     border-bottom: 1px solid rgba(225, 225, 225, 0.253);
 }
 
+.Logo img {
+    height: 60px;
+}
+
 .DashboardLinks {
     margin-top: 20px;
     display: flex;
