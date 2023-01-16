@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
 import { Links } from "../../Data/Navlink";
+import Logo from "../../assets/Logo.png";
 
 const Navigation = () => {
 	const [Navtogled, setNavtogled] = useState(false);
@@ -24,7 +25,9 @@ const Navigation = () => {
 				<div className={style.Navigation_Container}>
 					<div className={style.Links}>
 						<a href="/" className={style.logo}>
-							<div className={style.headerrlogo}></div>
+							<div className={style.headerrlogo}>
+								<img src={Logo} alt="" />
+							</div>
 						</a>
 						<input type="checkbox" id={style.navCheck} onClick={() => setNavtogled((Navtogled) => !Navtogled)} checked={Navtogled} readOnly></input>
 						<label htmlFor={style.navCheck} className={style.navToggler}>

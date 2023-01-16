@@ -98,10 +98,10 @@ ul {
 }
 
 
-.headerrlogo {
-    background-image: url("../../../public/Img/Logo.png");
+.headerrlogo img {
+
     height: 60px;
-    width: 200px;
+    /* width: 200px; */
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
