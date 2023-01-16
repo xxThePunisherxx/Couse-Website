@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./AdminCourseList.module.css";
+import style from "./AdminCourseListPage.module.css";
 import { MdModeEditOutline, MdDeleteSweep } from "react-icons/md";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,17 +7,17 @@ import uuid from "react-uuid";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 
-const AdminCourseList = () => {
-	const delRef = useRef();
+const AdminCourseListPage = () => {
+	const delfromListRef = useRef();
 	useEffect(() => {
-		let handler = (event) => {
-			if (!delRef.current.contains(event.target)) {
+		let Handler = (event) => {
+			if (!delfromListRef.current.contains(event.target)) {
 				setAreYouSureVisible(false);
 			}
 		};
-		document.addEventListener("mousedown", handler);
+		document.addEventListener("mousedown", Handler);
 		return () => {
-			document.removeEventListener("mousedown", handler);
+			document.removeEventListener("mousedown", Handler);
 		};
 	});
 	const [trainingData, setTrainingData] = useState([{}]);
@@ -75,7 +75,7 @@ const AdminCourseList = () => {
 			<div className={style.allCourseWrapper}>
 				<h1>Active Courses</h1>
 				<div className={style.allCourseGrid}>
-					{trainingData.slice(0, 5).map((Training) => (
+					{trainingData.map((Training) => (
 						<div key={uuid()} className={style.AdminCourseCard}>
 							<div className={style.AdminCourseCard_Info}>
 								<img src={Training.image} alt={Training.title}></img>
@@ -95,14 +95,9 @@ const AdminCourseList = () => {
 						</div>
 					))}
 				</div>
-
-				<button className={style.new}>
-					{" "}
-					<Link to={"/admin/allCourse"}>View All</Link>
-				</button>
 			</div>
 			{showAreYouSureVisible && (
-				<div className={style.areYouSureAboutThat} ref={delRef}>
+				<div className={style.areYouSureAboutThat} ref={delfromListRef}>
 					<div className={style.confirmationItems}>
 						<h1>This is a dangerous action. Are you sure about this?</h1>
 						<form className={style.confirmationForm}>
@@ -132,4 +127,4 @@ const AdminCourseList = () => {
 	);
 };
 
-export default AdminCourseList;
+export default AdminCourseListPage;

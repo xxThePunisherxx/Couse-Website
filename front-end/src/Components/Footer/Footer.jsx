@@ -2,6 +2,9 @@ import React from "react";
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import Image from "../../assets/Logo.png";
+import fb from "../../assets/Icons/facebook.png";
+import linkin from "../../assets/Icons/linkedin.png";
+import insta from "../../assets/Icons/instagram.png";
 
 const Footer = () => {
 	return (
@@ -56,13 +59,16 @@ const Footer = () => {
 					<h1>Connect with us</h1>
 					<div className={style.Social_links}>
 						<a href="https://www.facebook.com/" target="blank">
-							<img src="Icons/facebook.png" alt="Social icons" />
+							<img src={fb} alt="Social icons" />
+							{/* <img src="Icons/facebook.png" alt="Social icons" /> */}
 						</a>
 						<a href="https://www.linkedin.com/" target="blank">
-							<img src="Icons/linkedin.png" alt="Social icons" />
+							<img src={linkin} alt="Social icons" />
+							{/* <img src="Icons/linkedin.png" alt="Social icons" /> */}
 						</a>
 						<a href="https://www.instagram.com/" target="blank">
-							<img src="Icons/instagram.png" alt="Social icons" />
+							<img src={insta} alt="Social icons" />
+							{/* <img src="Icons/instagram.png" alt="Social icons" /> */}
 						</a>
 					</div>
 				</div>
