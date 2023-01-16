@@ -1,75 +1,42 @@
 import React from "react";
 import style from "./AdminCourseListPage.module.css";
-import { MdModeEditOutline, MdDeleteSweep } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { MdModeEditOutline, MdDeleteSweep, MdOutlineClose } from "react-icons/md";
 import axios from "axios";
 import uuid from "react-uuid";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import useFetch from "../../Utils/Hooks/fetch";
+import { useState } from "react";
 
 const AdminCourseListPage = () => {
-	const delfromListRef = useRef();
-	useEffect(() => {
-		let Handler = (event) => {
-			if (!delfromListRef.current.contains(event.target)) {
-				setAreYouSureVisible(false);
-			}
-		};
-		document.addEventListener("mousedown", Handler);
-		return () => {
-			document.removeEventListener("mousedown", Handler);
-		};
-	});
-	const [trainingData, setTrainingData] = useState([{}]);
-	const [showAreYouSureVisible, setAreYouSureVisible] = useState(false);
-	const [delID, setdelID] = useState(0);
-	const [delTitle, setdelTitle] = useState("");
-	const [ConformFormInput, setConformFormInput] = useState("");
-	const [ConformFormButtonDisabled, setConformFormButtonDisabled] = useState(true);
+	const [showSuccecss, setshowSuccecss] = useState(false);
+	const [ShowconfirmDelete, setShowconfirmDelete] = useState(false);
+	const [ToDelete, setToDelete] = useState(false);
+	const { data: trainingData } = useFetch("http://localhost:8080/api/training");
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				let response = await axios.get("http://localhost:8080/api/training");
-				setTrainingData(response.data);
-			} catch (error) {
-				if (error.response) {
-					console.log(error.response.status);
-					console.log(error.response.headers);
-				} else {
-					console.log(`Error: ${error.message}`);
-				}
-			}
-		};
-		fetchData();
-	}, []);
-	useEffect(() => {
-		if (delTitle.length !== 0 && ConformFormInput === delTitle) {
-			setConformFormButtonDisabled(false);
-		} else {
-			setConformFormButtonDisabled(true);
-		}
-	}, [ConformFormInput, delTitle]);
-
-	const handleDeleteConfirmation = (id, title) => {
-		setdelID(id);
-		setAreYouSureVisible(true);
-		setdelTitle(title);
+	const handleDeletePopup = (id) => {
+		setShowconfirmDelete(true);
+		setToDelete(id);
 	};
-	const handleConfirmedDelete = async (id, e) => {
+	const handleCancel = () => {
+		setShowconfirmDelete(false);
+	};
+	const handleConfirm = async () => {
+		let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete);
 		try {
-			let response = await axios.delete("http://localhost:8080/api/training/delete/" + delID);
-			console.log(response.data);
 			if (response.status === 201) {
 				setTimeout(() => {
+					setshowSuccecss(true);
+					setTimeout(() => {
+						setshowSuccecss(false);
+					}, 1000);
 					window.location.reload();
-				}, 500);
+				}, 2000);
 			}
 		} catch (error) {
 			console.log("Error" + error.message);
 		}
 	};
-	// console.log(ConformFormInput);
+
 	return (
 		<>
 			<div className={style.allCourseWrapper}>
@@ -88,7 +55,12 @@ const AdminCourseListPage = () => {
 										<MdModeEditOutline />
 									</button>
 								</Link>
-								<button className={style.Delete_Btn} onClick={(e) => handleDeleteConfirmation(Training._id, Training.title)}>
+								<button
+									className={style.Delete_Btn}
+									onClick={(e) => {
+										handleDeletePopup(Training._id);
+									}}
+								>
 									<MdDeleteSweep />
 								</button>
 							</div>
@@ -96,31 +68,33 @@ const AdminCourseListPage = () => {
 					))}
 				</div>
 			</div>
-			{showAreYouSureVisible && (
-				<div className={style.areYouSureAboutThat} ref={delfromListRef}>
-					<div className={style.confirmationItems}>
-						<h1>This is a dangerous action. Are you sure about this?</h1>
-						<form className={style.confirmationForm}>
-							<h1>
-								Please type "
-								<span className={style.inputHightlight}>
-									<h1>{delTitle}</h1>
-								</span>
-								" below to continue
-							</h1>
-							<input
-								type="text"
-								placeholder=""
-								value={ConformFormInput}
-								onChange={(e) => {
-									setConformFormInput(e.target.value);
-								}}
-							/>
-							<button disabled={ConformFormButtonDisabled} onClick={handleConfirmedDelete}>
-								Delete
+
+			{ShowconfirmDelete && (
+				<div className={style.popup}>
+					<div className={style.close_btn}>
+						<h1>
+							<button onClick={handleCancel}>
+								<MdOutlineClose />
 							</button>
-						</form>
+						</h1>
 					</div>
+					<div className={style.contnets}>
+						<h1>Are you sure you want to proceed?</h1>
+						<h2> This action cannot be reversed.</h2>
+					</div>
+					<div className={style.button_grid}>
+						<button className={style.delete} onClick={handleConfirm}>
+							Delete
+						</button>
+						<button className={style.cancel} onClick={handleCancel}>
+							Cancel
+						</button>
+					</div>
+				</div>
+			)}
+			{showSuccecss && (
+				<div className={style.successBoard}>
+					<h1>Deleted Succesfully</h1>
 				</div>
 			)}
 		</>

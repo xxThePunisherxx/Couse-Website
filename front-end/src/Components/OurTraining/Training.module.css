@@ -1,7 +1,7 @@
 :root {
     --headingOne-size: 5rem;
-    --headingOne-color: black;
-    --headingOneHighlight-color: #0f5288;
+
+    --headingOneHighlight-color: ;
     --gridColumns: repeat(4, 400px);
     --gridH1-fontsize: 1.3rem;
     --gridH2-fontsize: 1rem;
@@ -33,6 +33,7 @@
     text-align: center;
     font-size: var(--headingOne-size);
     padding: 5rem;
+
 }
 
 .HeadingHighlight {

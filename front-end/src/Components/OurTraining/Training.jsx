@@ -1,30 +1,12 @@
 import React from "react";
 import style from "./Training.module.css";
 import { Link } from "react-router-dom";
-// import { TrainingData } from "../../Data/Trainings";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import uuid from "react-uuid";
-const Training = () => {
-	const [trainingData, setTrainingData] = useState([{}]);
+import useFetch from "../../Utils/Hooks/fetch";
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				let response = await axios.get("http://localhost:8080/api/training");
-				setTrainingData(response.data);
-				console.log(response.data);
-			} catch (error) {
-				if (error.response) {
-					console.log(error.response.status);
-					console.log(error.response.headers);
-				} else {
-					console.log(`Error: ${error.message}`);
-				}
-			}
-		};
-		fetchData();
-	}, []);
+const Training = () => {
+	const { data: trainingData } = useFetch("http://localhost:8080/api/training");
+
 	let SlicedTraining = trainingData.slice(0, 12);
 	console.log(trainingData);
 	return (
