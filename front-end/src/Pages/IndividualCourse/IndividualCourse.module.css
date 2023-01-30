@@ -1,16 +1,31 @@
-.Training_header,
-.Training_DescriptionWrapper {
+.Training_header {
     margin: 0 auto;
-    width: 60%;
     padding: 5rem;
+    background-image: url(https://images.pexels.com/photos/2115217/pexels-photo-2115217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-color: rgba(0, 0, 0, 0.501);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.Training_contents {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.Training_contents>* {
+    margin-top: 20px;
+    color: white;
 }
 
 .Training_header h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .Training_header h2 {
-    font-size: 2rem;
+    font-size: 1.4rem;
 }
 
 .training_header_btn {
@@ -21,25 +36,195 @@
     margin-left: 50px;
 }
 
-.training_header_btn button {
-    font-size: 2rem;
-    padding: 1rem;
-    border: 2px solid black;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: transparent;
-    transition: all ease .2s;
+.training_header_btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    width: fit-content;
 }
 
-.Training_header button:hover {
+.training_header_btn button {
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: fit-content;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.training_header_btn button:nth-child(1) {
+    color: black;
+    background-color: #f7d452;
+    margin-right: 50px;
+}
+
+.training_header_btn button:nth-child(1):hover {
+    background-color: #0f5288;
     color: white;
-    background-color: black;
 }
 
 .Training_header_sub {
-
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     row-gap: 20px;
+    width: max-content;
+}
 
+.Training_header_sub h2:nth-child(2) {
+    margin-left: 50px;
+}
+
+.training_header_btn button {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+}
+
+.training_header_btn button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.training_header_btn button .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+}
+
+.training_header_btn button .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+}
+
+.training_header_btn button:hover {
+    background-color: var(--hover-color);
+}
+
+.training_header_btn button:hover .arrow {
+    background: var(--secondary-color);
+}
+
+.training_header_btn button:hover .arrow:before {
+    right: 0;
+}
+
+.Training_DescriptionWrapper {
+    padding: 5rem;
+
+}
+
+.Training_Description {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.Training_Description h1 {
+    width: fit-content;
+    font-size: 1.5rem;
+    color: #0f5288;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 800;
+    border-bottom: 3px solid #0f5288;
+    margin-bottom: 20px;
+}
+
+.Training_Description p {
+    font-size: 1.2rem;
+    text-align: justify;
+    line-height: 1.4em;
+}
+
+.course_overview {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.BannerHeading {
+    background-color: #0f5288;
+    color: white;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-radius: 2px;
+}
+
+.BannerHeading h1 {
+    padding: 2px;
+    line-height: 1.4em;
+}
+
+.BannerHeading .course_overview_title_span {
+    text-transform: uppercase;
+}
+
+.BannerHeading .arrow button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+
+}
+
+.course_overview_contents {
+    padding-left: 20px;
+}
+
+.course_overview_contents:first-child h2 {
+    margin-top: 0px;
+}
+
+.course_overview_contents h2 {
+    margin-top: 20px;
+}
+
+.course_overview_contents h2 .bulletPoints ul {
+    padding-left: 25px;
+}
+
+.bulletPoints ul {
+    padding-left: 20px;
+}
+
+.bulletPoints ul li {
+    list-style: disc;
+    font-size: 1rem;
+
+
+}
+
+.bulletPoints ul li::marker {
+
+    font-size: 1em;
 }

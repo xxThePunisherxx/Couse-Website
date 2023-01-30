@@ -15,7 +15,7 @@ const CourseCategoryList = () => {
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
-				setTrainingCategoryList(response.data);
+				setTrainingCategoryList(response.data.categorys);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -27,7 +27,7 @@ const CourseCategoryList = () => {
 		};
 		fetchData();
 	}, []);
-	// console.log(trainingCategoryList);
+
 	const handleDelete = async (id, e) => {
 		try {
 			let response = await axios.delete("http://localhost:8080/api/category/delete/" + id);

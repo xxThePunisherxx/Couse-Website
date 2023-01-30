@@ -20,8 +20,10 @@ const RemoveCourse = () => {
 			// get request to get pre-update value of the course.
 			try {
 				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
-				setIndividualTrainingData(response.data); //  data feilds of individual course
-				setIndividualTrainingCat(response.data.category); // category object of course being edited
+				setIndividualTrainingData(response.data.trainings); //  data feilds of individual course
+				setIndividualTrainingCat(response.data.trainings.category); // category object of course being edited
+				// console.log(response.data.trainings);
+				// console.log(response.data.trainings);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -39,7 +41,8 @@ const RemoveCourse = () => {
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
-				setTrainingCategory(response.data);
+				setTrainingCategory(response.data.categorys);
+				// console.log(response.data.categorys);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -51,7 +54,7 @@ const RemoveCourse = () => {
 		};
 		fetchData();
 	}, []);
-	console.log(trainingCategory);
+	// console.log(trainingCategory);
 
 	const handlesubmit = async (e) => {
 		e.preventDefault();
@@ -124,9 +127,8 @@ const RemoveCourse = () => {
 					<input name="course_careerPath" defaultValue={IndividualtrainingData.career} type="text" placeholder="Career path" required></input>
 					<h1>Course Category:</h1>
 					<select name="dropdown">
-						{/* preupdate training course category. */}
 						<option value={IndividualtrainingDataCat._id}>{IndividualtrainingDataCat.course_type}</option>
-						{/* list of all possible categories. */}
+
 						{trainingCategory.map((Category) => (
 							<option key={uuid()} value={Category._id}>
 								{Category.course_type}

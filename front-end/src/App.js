@@ -6,7 +6,7 @@ import Comming from "./Pages/CommingSoon/Comming";
 import ClientsAll from "./Pages/Clients/ClientsAll";
 import NotFound from "./Pages/NotFound/NotFound";
 import Admin from "./Pages/Admin/Admin";
-// import Test from "./Pages/TestPage/Test";
+import Test from "./Pages/TestPage/Test";
 import ScrollToTop from "./Components/ScrollToTop";
 import IndividualCourse from "./Pages/IndividualCourse/IndividualCourse";
 import ClientLayout from "./Components/ClientLayout/ClientLayout";
@@ -20,10 +20,11 @@ import Updatecourse from "./Pages/Update course/UpdateCourse";
 import AddCourseCate from "./Pages/Add Course Category/AddCourseCate";
 import UpdateCourseCategory from "./Pages/Update course Category/UpdateCourseCategory";
 import AdminCourseListPage from "./Pages/Admin Course Page/AdminCourseListPage";
+import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
 	return (
-		<>
+		<AuthProvider>
 			<BrowserRouter>
 				<ScrollToTop />
 				<Routes>
@@ -39,7 +40,7 @@ function App() {
 						<Route path="/career" element={<Comming />} />
 						<Route path="/services" element={<Comming />} />
 						<Route path="/allClients" element={<ClientsAll />} />
-						{/* <Route path="/test" element={<Test />} /> just for quick testing of page */}
+						<Route path="/test" element={<Test />} /> just for quick testing of page
 						<Route path="*" element={<NotFound />} />
 						<Route path="/course-view/:courseID" element={<IndividualCourse />} />
 					</Route>
@@ -57,7 +58,7 @@ function App() {
 					</Route>
 				</Routes>
 			</BrowserRouter>
-		</>
+		</AuthProvider>
 	);
 }
 

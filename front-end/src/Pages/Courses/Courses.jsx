@@ -11,8 +11,8 @@ const Courses = () => {
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/training");
-				setTrainingData(response.data);
-				console.log(response.data);
+				setTrainingData(response.data.training);
+				console.log(response.data.training);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -37,7 +37,7 @@ const Courses = () => {
 							<img src={item.image} alt={item.Title} />
 							<h1>{item.title}</h1>
 							<h2>Duration: {item.duration}</h2>
-							<button>View Course</button>
+							<button>View Details</button>
 						</div>
 					</Link>
 				))}
