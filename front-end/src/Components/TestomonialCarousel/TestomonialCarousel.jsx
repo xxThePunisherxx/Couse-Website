@@ -15,15 +15,11 @@ function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 			autoPlay &&
 			setTimeout(() => {
 				slideRight();
-			}, ShowItemFor);
+			}, 8000);
 	});
 
 	const slideRight = () => {
 		setCurrent(current === images.length - 1 ? 0 : current + 1);
-	};
-
-	const slideLeft = () => {
-		setCurrent(current === 0 ? images.length - 1 : current - 1);
 	};
 
 	return (
@@ -56,23 +52,6 @@ function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 						</Link>
 					);
 				})}
-				<div className={style.carouselArrowLeft} onClick={slideLeft}>
-					<h1>&lsaquo;</h1>
-				</div>
-				<div className={style.carouselArrowRight} onClick={slideRight}>
-					<h1>&rsaquo;</h1>
-				</div>
-				<div className={style.carouselPagination}>
-					{images.map((_, index) => {
-						return (
-							<div
-								key={index}
-								className={index === current ? "Testipagination_dot Testipagination_dot-active" : "Testipagination_dot"}
-								onClick={() => setCurrent(index)}
-							></div>
-						);
-					})}
-				</div>
 			</div>
 		</div>
 	);

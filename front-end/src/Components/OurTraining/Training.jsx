@@ -7,12 +7,8 @@ import useFetch from "../../Utils/Hooks/fetch";
 const Training = () => {
 	const { data: trainingData } = useFetch("http://localhost:8080/api/training");
 
-	let test = trainingData?.training;
-
-	console.log(test);
-
-	// let SlicedTraining = trainingData.slice(0, 12);
-	let SlicedTraining = test.slice(0, 12);
+	let TrrainingDataArr = trainingData?.training;
+	let SlicedTraining = TrrainingDataArr.slice(0, 12);
 	return (
 		<div className={style.TrainingContainer}>
 			<h1 className={style.MainHeading}>

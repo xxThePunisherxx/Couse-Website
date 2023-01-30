@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./IndividualCourse.module.css";
 import { useParams } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaClock, FaUserTie } from "react-icons/fa";
@@ -29,10 +28,6 @@ const IndividualCourse = () => {
 		fetchData();
 	}, [courseID]);
 
-	// const navigate = useNavigate();
-	// function gotoHomepage() {
-	// 	navigate("/");
-	// }
 	return (
 		<div className={style.IndividualPageWrapper}>
 			<div className={style.Training_header}>
@@ -63,8 +58,7 @@ const IndividualCourse = () => {
 			<div className={style.Training_DescriptionWrapper}>
 				<div className={style.Training_Description}>
 					<h1>{IndividualtrainingData.title}</h1>
-					{/* array.map for all paragraph form backend */}
-					<p>{IndividualtrainingData.description}</p>
+					<p dangerouslySetInnerHTML={{ __html: IndividualtrainingData.description }}></p>
 				</div>
 				<div className={style.course_overview}>
 					<div className={style.BannerHeading}>

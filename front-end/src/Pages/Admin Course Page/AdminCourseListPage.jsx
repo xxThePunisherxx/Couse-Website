@@ -11,7 +11,9 @@ const AdminCourseListPage = () => {
 	const [showSuccecss, setshowSuccecss] = useState(false);
 	const [ShowconfirmDelete, setShowconfirmDelete] = useState(false);
 	const [ToDelete, setToDelete] = useState(false);
-	const { data: trainingData } = useFetch("http://localhost:8080/api/training");
+	const { data: trainingResponse } = useFetch("http://localhost:8080/api/training");
+
+	const trainingData = trainingResponse.training;
 
 	const handleDeletePopup = (id) => {
 		setShowconfirmDelete(true);

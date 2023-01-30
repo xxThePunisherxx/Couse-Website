@@ -6,8 +6,19 @@ import axios from "axios";
 import uuid from "react-uuid";
 import { Link } from "react-router-dom";
 import useFetch from "../../Utils/Hooks/fetch";
+import useAuth from "../../hooks/useAuth";
 
 const AdminCourseList = () => {
+	const { auth } = useAuth();
+	const authAxios = axios.create({
+		baseURL: "http://localhost:8080/api/training/",
+		headers: {
+			Authorization: `Bearer ${auth.accessToken}`,
+			withCredentails: true,
+		},
+	});
+
+	// console.log(auth);
 	const [showSuccecss, setshowSuccecss] = useState(false);
 	const [ShowconfirmDelete, setShowconfirmDelete] = useState(false);
 	const [ToDelete, setToDelete] = useState(false);
@@ -15,17 +26,20 @@ const AdminCourseList = () => {
 	const { data: trainingResponse } = useFetch("http://localhost:8080/api/training");
 
 	const trainingData = trainingResponse.training;
-	console.log(trainingData);
 
 	const handleDeletePopup = (id) => {
+		// show popup for confirming delete.
 		setShowconfirmDelete(true);
 		setToDelete(id);
 	};
 	const handleCancel = () => {
+		// hide popup for delete confirmation.
 		setShowconfirmDelete(false);
 	};
+
 	const handleConfirm = async () => {
-		let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete);
+		//delete functions when confirmed by the user.
+		let response = await authAxios.delete("delete/" + ToDelete);
 		try {
 			if (response.status === 201) {
 				setTimeout(() => {
@@ -67,9 +81,10 @@ const AdminCourseList = () => {
 						</div>
 					))}
 				</div>
-				<button className={style.new}>
-					<Link to={"/admin/allCourse"}> View All</Link>
-				</button>
+
+				<Link to={"/admin/allCourse"}>
+					<button className={style.new}>View All</button>
+				</Link>
 			</div>
 			{ShowconfirmDelete && (
 				<div className={style.popup}>

@@ -15,15 +15,14 @@ const RemoveCourse = () => {
 	const [IndividualtrainingDataCat, setIndividualTrainingCat] = useState(""); // just contains course category of fetched course.
 	const [trainingCategory, setTrainingCategory] = useState([{}]); // list of all training categories.
 
+	console.log(IndividualtrainingDataCat);
 	useEffect(() => {
 		const fetchData = async () => {
 			// get request to get pre-update value of the course.
 			try {
 				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
-				setIndividualTrainingData(response.data.trainings); //  data feilds of individual course
-				setIndividualTrainingCat(response.data.trainings.category); // category object of course being edited
-				// console.log(response.data.trainings);
-				// console.log(response.data.trainings);
+				setIndividualTrainingData(response.data.trainings);
+				setIndividualTrainingCat(response.data.trainings.category);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -54,7 +53,6 @@ const RemoveCourse = () => {
 		};
 		fetchData();
 	}, []);
-	// console.log(trainingCategory);
 
 	const handlesubmit = async (e) => {
 		e.preventDefault();

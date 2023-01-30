@@ -3,9 +3,9 @@
     --main-Heading1: 5rem;
     --main-Heading2: 1.5rem;
     --main-Heading-highlight: #0f5288;
-    --form-input-fontSize: 2rem;
-    --formLabel-fontSize: 2rem;
-    --submit-fontSize: 2rem;
+    --form-input-fontSize: 5rem;
+    --formLabel-fontSize: 1rem;
+    --submit-fontSize: 1rem;
 }
 
 .AddCourseWrapper {
@@ -31,35 +31,40 @@
 
 .AddCourse form {
     padding: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-    row-gap: 10px;
-    align-items: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .FormWrappper input,
 .FormWrappper textarea {
-    font-size: var(--form-input-fontSize);
+    font-size: 1.5rem;
     border-radius: 5px;
-    border: 2px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 15px;
-    margin: 10px 20px;
-    border-radius: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 1100px;
 }
 
 .FormWrappper h1 {
-    font-size: var(--formLabel-fontSize);
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.FormWrappper h1:first-child {
+    margin-top: 0px;
 }
 
 .FormWrappper select {
-    font-size: var(--form-input-fontSize);
+    font-size: 1.5rem;
     border-radius: 5px;
     border: 2px solid black;
     padding: 15px;
-    margin: 10px 20px;
-    border-radius: 20px;
+
+    margin-top: 10px;
+    border-radius: 10px;
     cursor: pointer;
+    width: 1100px;
 }
 
 .FormWrappper input:focus,
@@ -77,19 +82,17 @@
     padding: 0.6em 1.1em;
     gap: 0.4rem;
     font-weight: bold;
-    border-radius: 20px;
-    background: linear-gradient(45deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
-    background-size: 300%;
-    background-position: left center;
-    transition: background .3s ease-in-out;
-    color: #fff;
+    background-color: #0f5288;
+    border-radius: 10px;
+    transition: all ease-in .2s;
+    color: white;
     border: none;
 
 }
 
 .FormWrappper button:hover {
-    background-size: 320%;
-    background-position: right center;
+    background-color: #0071e2;
+    color: black;
 }
 
 .Spantwo {
@@ -105,10 +108,14 @@
     background-color: green;
     margin-top: 10px;
     margin-right: 10px;
-    border: 3px solid black;
+
     border-radius: 20px;
     color: white;
 
+}
+
+.ck {
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width:1024px) {

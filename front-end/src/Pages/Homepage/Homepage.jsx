@@ -8,6 +8,10 @@ import Map from "../../Components/Map/Map";
 import Projects from "../../Components/Projects/Projects";
 
 const Homepage = () => {
+	// let localData = { LocalToken: "", LocalRole: "" };
+
+	// localStorage.setItem("User Info", JSON.stringify(localData));
+
 	return (
 		<>
 			<Hero />

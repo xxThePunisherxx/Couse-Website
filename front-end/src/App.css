@@ -124,3 +124,8 @@
 .AdminDash-Inactive h1 {
     color: white;
 }
+
+
+.ck-editor__editable {
+    height: 150px;
+}

@@ -1,76 +1,30 @@
 import React from "react";
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState } from "react";
 import style from "./Login.module.css";
-import AuthContext from "../../context/AuthProvider";
-// import axios from "axios";
-import axios from "../../api/axios";
+
+import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
 	const usernameRef = useRef();
 	const errorRef = useRef();
 	const navigate = useNavigate();
-
-	// const [user, setUser] = useState("");
-	// const [pwd, setPwd] = useState("");
-	// const [errorMesg, seterrorMesg] = useState("");
-
-	// useEffect(() => {
-	// 	usernameRef.current.focus();
-	// }, []);
-	// useEffect(() => {
-	// 	seterrorMesg("");
-	// }, [user, pwd]);
-
-	//const handleSubmit = async (e) => {
-	// e.preventDefault();
-	// const data = new FormData(e.target);
-	// let enterdData = Object.fromEntries(data.entries());
-	// console.log(enterdData);
-	//FIXME:
-	//e.preventDefault();
-	// try {
-	// 	const response = await axios.post("http://localhost:8080//api/user/login", JSON.stringify({ email: user, password: pwd }), {
-	// 		headers: { "Content-Type": "application/json" },
-	// 		withCredentials: true,
-	// 	});
-	// 	setUser("");
-	// 	setPwd("");
-	// 	console.log(JSON.stringify(response?.data));
-	// 	console.log(JSON.stringify(response));
-	// 	const accessToken = response?.data?.accessToken;
-	// 	const role = response?.data?.role;
-	// } catch (err) {
-	// 	if (!err?.response) {
-	// 		seterrorMesg("No server response.");
-	// 	} else {
-	// 		seterrorMesg(err);
-	// 	}
-	// }
-	//auth.login(user);
-	//};
-
-	// const handleSubmit = async (e) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		const response = await axios.post("http://localhost:8080/api/user/login", JSON.stringify({ email: user, password: pwd }), {
-	// 			headers: { "Content-Type": "application/json" },
-	// 			withCredentials: true,
-	// 		});
-	// 		setUser("");
-	// 		setPwd("");
-	// 		console.log(JSON.stringify(response?.data));
-	// 		console.log(JSON.stringify(response));
-	// 	} catch {}
-	const { setAuth } = useContext(AuthContext);
-
-	const errRef = useRef();
-
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/admin/dashboard";
+	const { auth, setAuth } = useAuth();
 	const [email, setemail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errMsg, setErrMsg] = useState("");
-	const [success, setSuccess] = useState(false);
-	const LOGIN_URL = "/api/user/login";
+
+	useEffect(() => {
+		if (auth.Role === "admin") {
+			navigate("/admin/dashboard");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		usernameRef.current.focus();
@@ -88,29 +42,24 @@ const Login = () => {
 		};
 
 		try {
-			console.log(postData);
-			const response = await axios.post(LOGIN_URL, postData);
-			console.log(response.data);
+			console.log("try??");
+			const response = await axios.post("http://localhost:8080/api/user/login", postData, true, {
+				withCredentials: true,
+				crossorigin: true,
 
-			// const response = await axios.post(LOGIN_URL, JSON.stringify({ email, password }), true, {
-			// 	headers: { "Content-Type": "application/json" },
-			// 	withCredentials: true,
-			// });
-			// console.log(JSON.stringify(response?.data));
-			// //console.log(JSON.stringify(response));
+				headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
+				credentials: "include",
+			});
+
 			const accessToken = response?.data?.token;
-			console.log(accessToken);
-			// const roles = response?.data?.roles;
-			// setAuth({ email, password, roles, accessToken });
-			setAuth({ email, password, accessToken });
-
-			// setemail("");
-			// setPassword("");
-			console.log(response.status);
-			if (response.status === 200) {
-				navigate("/admin/dashboard");
-			}
-			// setSuccess(true);
+			const role = response?.data?.user.role;
+			let localData = { LocalToken: accessToken, LocalRole: role };
+			localStorage.setItem("User Info", JSON.stringify(localData));
+			setAuth({ AuthRole: role, AuthAccessToken: accessToken });
+			setemail("");
+			setPassword("");
+			console.log(from);
+			window.location.href = `${from}`;
 		} catch (err) {
 			if (!err?.response) {
 				setErrMsg("No Server Response");
@@ -121,13 +70,11 @@ const Login = () => {
 			} else {
 				setErrMsg("Login Failed");
 			}
-			errRef.current.focus();
 		}
 	};
 
 	return (
 		<div className={style.AdminLoginWrapper}>
-			{success && <h1>Succcess</h1>}
 			<div className={style.AdminLogin}>
 				<div className={style.Heading}>
 					<h1>
@@ -138,10 +85,8 @@ const Login = () => {
 				<p ref={errorRef} className={errMsg ? "errmeg" : "offscreen"}>
 					{errMsg}
 				</p>
-				{/* <form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}> */}
+
 				<form onSubmit={handleSubmit} autoComplete="off" className={style.FormWrappper}>
-					{/* <input name="User_Name" type="text" placeholder="User Name" required ref={usernameRef}></input> */}
-					{/* <input name="Password" type="password" placeholder="Password" required></input> */}
 					<label htmlFor="username">Email:</label>
 					<input type="text" id="username" ref={usernameRef} onChange={(e) => setemail(e.target.value)} value={email} required />
 					<label htmlFor="password">password:</label>
