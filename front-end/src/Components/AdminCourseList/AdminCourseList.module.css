@@ -1,3 +1,17 @@
+:root {
+    --headingOne-size: 5rem;
+
+    --headingOneHighlight-color: ;
+    --gridColumns: repeat(4, 350px);
+    --gridH1-fontsize: 1.3rem;
+    --gridH2-fontsize: 1rem;
+    --buttonHover-bg: #0f5288;
+    --button-border: black;
+    --enlarge: scale3d(1.1, 1.1, 1.1);
+    --grid-gap: 20px;
+
+}
+
 .allCourseWrapper {
     display: grid;
     place-items: center;
@@ -69,7 +83,6 @@
 }
 
 .new {
-
     cursor: pointer;
     margin: 0 auto;
     margin-top: 20px;
@@ -197,4 +210,51 @@
     border-radius: 20px;
     color: white;
 
+}
+
+
+
+.TrainingGrid {
+    display: grid;
+    grid-template-columns: var(--gridColumns);
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
+}
+
+.Skel .imgDiv {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(120deg,
+            #e5e5e5 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: Load 2s infinite;
+    border-radius: 20px;
+}
+
+.Skel .H1Div,
+.H2Div {
+    width: 99%;
+    height: 39px;
+    padding: 15px;
+    background: linear-gradient(120deg,
+            #e5e5e5 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: Load 2s infinite;
+    margin: 10px auto;
+    border-radius: 20px;
+
+}
+
+@keyframes Load {
+    100% {
+        background-position: -100% 0;
+    }
 }

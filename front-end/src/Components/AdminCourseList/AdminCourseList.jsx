@@ -10,6 +10,8 @@ import useAuth from "../../hooks/useAuth";
 
 const AdminCourseList = () => {
 	const { auth } = useAuth();
+	const dummyArr = [0, 1, 2, 3]; // just for adding skeleton.
+
 	const authAxios = axios.create({
 		baseURL: "http://localhost:8080/api/training/",
 		headers: {
@@ -18,13 +20,10 @@ const AdminCourseList = () => {
 		},
 	});
 
-	// console.log(auth);
 	const [showSuccecss, setshowSuccecss] = useState(false);
 	const [ShowconfirmDelete, setShowconfirmDelete] = useState(false);
 	const [ToDelete, setToDelete] = useState(false);
-
-	const { data: trainingResponse } = useFetch("http://localhost:8080/api/training");
-
+	const { data: trainingResponse, ispending } = useFetch("http://localhost:8080/api/training");
 	const trainingData = trainingResponse.training;
 
 	const handleDeletePopup = (id) => {
@@ -60,26 +59,40 @@ const AdminCourseList = () => {
 			<div className={style.allCourseWrapper}>
 				<h1>Active Courses</h1>
 				<div className={style.allCourseGrid}>
-					{trainingData.slice(0, 5).map((Training) => (
-						<div key={uuid()} className={style.AdminCourseCard}>
-							<div className={style.AdminCourseCard_Info}>
-								<img src={Training.image} alt={Training.title}></img>
-								<h1>{Training.title}</h1>
-								<h2>{Training.duration}</h2>
-							</div>
-							<div className={style.AdminCourseCard_Btn}>
-								<Link to={`/admin/updateCourse/${Training._id}`}>
-									<button className={style.Edit_Btn}>
-										<MdModeEditOutline />
-									</button>
-								</Link>
-
-								<button className={style.Delete_Btn} onClick={() => handleDeletePopup(Training._id)}>
-									<MdDeleteSweep />
-								</button>
-							</div>
+					{ispending && (
+						<div className={style.TrainingGrid}>
+							{dummyArr.map(() => (
+								<div className={style.Training}>
+									<div className={style.Skel}>
+										<div className={style.imgDiv}></div>
+										<div className={style.H1Div}></div>
+										<div className={style.H2Div}></div>
+									</div>
+								</div>
+							))}
 						</div>
-					))}
+					)}
+					{!ispending &&
+						trainingData.slice(0, 5).map((Training) => (
+							<div key={uuid()} className={style.AdminCourseCard}>
+								<div className={style.AdminCourseCard_Info}>
+									<img src={Training.image} alt={Training.title}></img>
+									<h1>{Training.title}</h1>
+									<h2>{Training.duration}</h2>
+								</div>
+								<div className={style.AdminCourseCard_Btn}>
+									<Link to={`/admin/updateCourse/${Training._id}`}>
+										<button className={style.Edit_Btn}>
+											<MdModeEditOutline />
+										</button>
+									</Link>
+
+									<button className={style.Delete_Btn} onClick={() => handleDeletePopup(Training._id)}>
+										<MdDeleteSweep />
+									</button>
+								</div>
+							</div>
+						))}
 				</div>
 
 				<Link to={"/admin/allCourse"}>

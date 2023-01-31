@@ -43,7 +43,6 @@ const RemoveCourse = () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
 				setTrainingCategory(response.data.categorys);
-				// console.log(response.data.categorys);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
