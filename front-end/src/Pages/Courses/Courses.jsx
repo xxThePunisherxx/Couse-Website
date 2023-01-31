@@ -1,37 +1,34 @@
 import React from "react";
 import style from "./Courses.module.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import useFetch from "../../Utils/Hooks/fetch";
 
 const Courses = () => {
-	const [trainingData, setTrainingData] = useState([{}]);
+	const dummyArr = [0, 1, 2, 3, 4, 5, 6, 7]; // just for adding skeleton.
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				let response = await axios.get("http://localhost:8080/api/training");
-				setTrainingData(response.data.training);
-				console.log(response.data.training);
-			} catch (error) {
-				if (error.response) {
-					console.log(error.response.status);
-					console.log(error.response.headers);
-				} else {
-					console.log(`Error: ${error.message}`);
-				}
-			}
-		};
-		fetchData();
-	}, []);
+	const { data: trainingData, ispending } = useFetch("http://localhost:8080/api/training");
+	let TrrainingDataArr = trainingData?.training;
 
 	return (
 		<div className={style.TrainingContainer}>
 			<h1 className={style.MainHeading}>
 				Our <span className={style.HeadingHighlight}>trainings</span>
 			</h1>
+			{ispending && (
+				<div className={style.TrainingGrid}>
+					{dummyArr.map(() => (
+						<div className={style.Training}>
+							<div className={style.Skel}>
+								<div className={style.imgDiv}></div>
+								<div className={style.H1Div}></div>
+								<div className={style.H2Div}></div>
+							</div>
+						</div>
+					))}
+				</div>
+			)}
 			<div className={style.TrainingGrid}>
-				{trainingData.map((item) => (
+				{TrrainingDataArr.map((item) => (
 					<Link to={`/course-view/${item._id}`} key={item._id}>
 						<div className={style.Training} key={item._id}>
 							<img src={item.image} alt={item.Title} />

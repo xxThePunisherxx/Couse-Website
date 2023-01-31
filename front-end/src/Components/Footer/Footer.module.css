@@ -2,17 +2,13 @@
     --grid-cols: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-
-
-
 .Footer_Container {
-    background-color: rgb(0, 0, 0);
-    color: white;
+    background-color: #1d1d1d;
+    color: #e7e7e7;
     display: grid;
     padding: 2rem;
     grid-template-columns: var(--grid-cols);
     column-gap: 20px;
-
 }
 
 .Footer_Container h1 {
@@ -21,7 +17,6 @@
 
 .Footer_Container h2 {
     font-size: 1.3rem;
-
 }
 
 .Footer_Container>div {
@@ -46,7 +41,6 @@
 }
 
 .Link_Containers ul li a {
-
     font-size: 1.5rem;
     text-decoration: none;
     color: grey;
@@ -63,7 +57,7 @@
 }
 
 .Info_Container h2:hover {
-    color: white;
+    color: #e2e2e2;
 }
 
 .Time {
@@ -71,7 +65,7 @@
 }
 
 .Link_Containers ul li a:hover {
-    color: white;
+    color: #e2e2e2;
 }
 
 .Social_Container {
@@ -91,7 +85,7 @@
 }
 
 .TelLink a {
-    color: white;
+    color: #e2e2e2;
 }
 
 @media screen and (max-width: 412px) {

@@ -9,6 +9,7 @@
     --button-border: black;
     --enlarge: scale3d(1.1, 1.1, 1.1);
     --grid-gap: 20px;
+
 }
 
 .TrainingContainer {
@@ -41,6 +42,7 @@
     display: flex;
     flex-direction: column;
     transition: all ease-in .2s;
+    background-color: rgba(200, 200, 200, 0.043);
 }
 
 .Training img {
@@ -107,25 +109,25 @@
 
 
 .TrainingContainer button {
+    cursor: pointer;
+    margin: 0 auto;
     margin-top: 50px;
     font-size: 2rem;
     width: fit-content;
     display: flex;
-    padding: 0.6em 1.1em;
+    padding: 0.5em 0.9em;
     gap: 0.4rem;
     font-weight: bold;
-    border-radius: 20px;
-    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
-    background: linear-gradient(45deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
-    background-size: 300%;
-    background-position: left center;
-    transition: background .3s ease-in-out;
-    color: #fff;
+    background-color: #0f5288;
+    border-radius: 10px;
+    transition: all ease-in .2s;
+    color: white;
+    border: none;
 }
 
 .TrainingContainer button:hover {
-    background-size: 320%;
-    background-position: right center;
+    background-color: #0071e2;
+    color: black;
 
 
 }

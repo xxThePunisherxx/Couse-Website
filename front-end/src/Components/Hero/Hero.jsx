@@ -19,22 +19,6 @@ const Hero = () => {
 				<div className={style.mid}>
 					<Carousel images={ImageList} EnableautoPlay={true} ShowItemFor={8000} />
 				</div>
-				{/* <div className={style.right}>
-						<div className={style.top}>
-							<img src="Icons/instagram.png" alt="icon" />
-							<h1>
-								70<sup>+</sup>
-							</h1>
-							<h2>Professional and Qualified teachers</h2>
-						</div>
-						<div className={style.bottom}>
-							<img src="Icons/instagram.png" alt="icon" />
-							<h1>
-								20<sup>+</sup>
-							</h1>
-							<h2>Courses and related materials</h2>
-						</div>
-					</div> */}
 			</div>
 		</div>
 		// </div>

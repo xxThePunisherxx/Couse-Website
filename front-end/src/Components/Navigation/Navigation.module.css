@@ -1,9 +1,8 @@
 :root {
-    --navBar-background: black;
-    --smallScreenNav-border: white;
-    --hamburger-color: yellow;
-    /* --hamburger-color: #0f5288; */
-    /* --Linkcolor-hover: #0f5288; */
+    --navBar-background: #1d1d1d;
+    --smallScreenNav-border: #e7e7e7;
+    --hamburger-color: #e7e7e7;
+    /* --hamburger-color: yellow; */
     --Linkcolor-hover: yellow;
 }
 
@@ -18,14 +17,11 @@ ul {
 
 .header {
     background-color: var(--navBar-background);
-    /* border-bottom: .5px solid var(--smallScreenNav-border); */
     position: relative;
     padding: 20px;
-
 }
 
 .Navigation_Container {
-
     margin: auto;
 }
 

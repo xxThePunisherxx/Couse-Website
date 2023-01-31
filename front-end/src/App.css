@@ -1,9 +1,6 @@
 :root {
     --NavLink-active: yellow;
-    --NavLink-inactive: white;
-    /* --NavLink-active: #0F5288;
-    --NavLink-inactive: black; */
-
+    --NavLink-inactive: #e7e7e7;
 }
 
 * {
