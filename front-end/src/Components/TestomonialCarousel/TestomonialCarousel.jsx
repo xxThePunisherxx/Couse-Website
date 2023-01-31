@@ -15,7 +15,7 @@ function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 			autoPlay &&
 			setTimeout(() => {
 				slideRight();
-			}, 8000);
+			}, 5000);
 	});
 
 	const slideRight = () => {

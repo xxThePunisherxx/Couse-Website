@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Training.module.css";
 import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 import useFetch from "../../Utils/Hooks/fetch";
 
 const Training = () => {
-	const { data: trainingData } = useFetch("http://localhost:8080/api/training");
-
+	const dummyArr = [0, 1, 2, 3]; // just for adding skeleton.
+	const { data: trainingData, ispending } = useFetch("http://localhost:8080/api/training");
 	let TrrainingDataArr = trainingData?.training;
 	let SlicedTraining = TrrainingDataArr.slice(0, 12);
 	return (
@@ -14,21 +14,39 @@ const Training = () => {
 			<h1 className={style.MainHeading}>
 				Our <span className={style.HeadingHighlight}>trainings</span>
 			</h1>
-			<div className={style.TrainingGrid}>
-				{SlicedTraining.map((item) => (
-					<Link to={`course-view/${item._id}`} key={uuid()}>
-						<div className={style.Training}>
-							<img src={item.image} alt={item.Title} />
-							<h1>{item.title}</h1>
-							<h2>Duration: {item.duration}</h2>
-						</div>
-					</Link>
-				))}
-			</div>
 
-			<Link to={"/courses"}>
-				<button>View all courses</button>
-			</Link>
+			{ispending && (
+				<div className={style.TrainingGrid}>
+					{dummyArr.map(() => (
+						<div className={style.Training}>
+							<div className={style.Skel}>
+								<div className={style.imgDiv}></div>
+								<div className={style.H1Div}></div>
+								<div className={style.H2Div}></div>
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+			{!ispending && (
+				<div className={style.TrainingGrid}>
+					{SlicedTraining.map((item) => (
+						<Link to={`course-view/${item._id}`} key={uuid()}>
+							<div className={style.Training}>
+								<img src={item.image} alt="Course banner" />
+								<h1>{item.title}</h1>
+								<h2>Duration: {item.duration}</h2>
+							</div>
+						</Link>
+					))}
+				</div>
+			)}
+
+			{!ispending && (
+				<Link to={"/courses"}>
+					<button>View all courses</button>
+				</Link>
+			)}
 		</div>
 	);
 };
