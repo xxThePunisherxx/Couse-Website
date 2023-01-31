@@ -101,7 +101,6 @@ const AddCourse = () => {
 							onChange={(event, editor) => {
 								const dataSt = editor.getData();
 								setCkStructure(dataSt);
-								// console.log({ event, editor, data });
 							}}
 						/>
 
