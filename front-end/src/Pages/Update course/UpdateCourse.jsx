@@ -17,6 +17,7 @@ const RemoveCourse = () => {
 	const [IndividualtrainingDataCat, setIndividualTrainingCat] = useState(""); // just contains course category of fetched course.
 	const [trainingCategory, setTrainingCategory] = useState([{}]); // list of all training categories.
 	const [ckPara, setCkPara] = useState();
+	const [ckStructure, setCkStructure] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,6 +25,7 @@ const RemoveCourse = () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
 				setIndividualTrainingData(response.data.trainings);
+				// console.log(response.data.trainings);
 				setIndividualTrainingCat(response.data.trainings.category);
 			} catch (error) {
 				if (error.response) {
@@ -69,20 +71,23 @@ const RemoveCourse = () => {
 			rating: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
+			syllabus: ckStructure,
 		};
 		console.log(postData);
-		// try {
-		// const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData);
-		// if (response.status === 201) {
-		// 	setTimeout(() => {
-		// 		navigate("/admin/dashboard");
-		// 	}, 1000);
-		// }
-		// 	console.log(response);
-		// 	setTimeout(() => {
-		// 		navigate("/admin/dashboard");
-		// 	}, 1000);
-		// } catch (error) {}
+		try {
+			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData);
+			if (response.status === 201) {
+				setTimeout(() => {
+					navigate("/admin/dashboard");
+				}, 1000);
+			}
+			console.log(response);
+			setTimeout(() => {
+				navigate("/admin/dashboard");
+			}, 1000);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	useEffect(() => {
 		UpdateRef.current.focus();
@@ -112,11 +117,11 @@ const RemoveCourse = () => {
 					<h1 className={style.ck}>Course Structure </h1>
 					<CKEditor
 						editor={Editor}
-						data="<p>Course structure</p>"
+						data={IndividualtrainingData.syllabus}
 						onChange={(event, editor) => {
 							const dataSt = editor.getData();
 							// setCkStructure(dataSt);
-							console.log(dataSt);
+							setCkStructure(dataSt);
 						}}
 					/>
 					<h1>Course Image</h1>

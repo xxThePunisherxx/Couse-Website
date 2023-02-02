@@ -42,6 +42,7 @@ function Carousel({ images, EnableautoPlay, ShowItemFor }) {
 			}}
 		>
 			<div className={style.carouselWrapper}>
+				{/* {console.log(images)} */}
 				{images.map((image, index) => {
 					return (
 						<>

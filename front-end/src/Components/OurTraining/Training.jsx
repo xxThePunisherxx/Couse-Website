@@ -9,6 +9,7 @@ const Training = () => {
 	const { data: trainingData, ispending } = useFetch("http://localhost:8080/api/training");
 	let TrrainingDataArr = trainingData?.training;
 	let SlicedTraining = TrrainingDataArr.slice(0, 12);
+
 	return (
 		<div className={style.TrainingContainer}>
 			<h1 className={style.MainHeading}>
@@ -18,7 +19,7 @@ const Training = () => {
 			{ispending && (
 				<div className={style.TrainingGrid}>
 					{dummyArr.map(() => (
-						<div className={style.Training}>
+						<div key={uuid()} className={style.Training}>
 							<div className={style.Skel}>
 								<div className={style.imgDiv}></div>
 								<div className={style.H1Div}></div>
@@ -33,7 +34,7 @@ const Training = () => {
 					{SlicedTraining.map((item) => (
 						<Link to={`course-view/${item._id}`} key={uuid()}>
 							<div className={style.Training}>
-								<img src={item.image} alt="Course banner" />
+								<img src={item.image} alt={item.title} />
 								<h1>{item.title}</h1>
 								<h2>Duration: {item.duration}</h2>
 							</div>

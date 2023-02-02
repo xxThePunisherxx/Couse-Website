@@ -49,21 +49,23 @@ const AddCourse = () => {
 			rating: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
-			structure: ckStructure,
+			// syllabus: ckStructure,
 		};
 		try {
-			// const response = await axios.post("http://localhost:8080/api/training/add", postData);
-			// if (response.status === 201) {
-			// 	setShowSuccess(true);
-			// 	setTimeout(() => {
-			// 		setTimeout(() => {
-			// 			setShowSuccess(false);
-			// 		}, 1000);
-			// 		navigate("/admin/dashboard");
-			// 	}, 2000);
-			// }
+			const response = await axios.post("http://localhost:8080/api/training/add", postData);
+			if (response.status === 201) {
+				setShowSuccess(true);
+				setTimeout(() => {
+					setTimeout(() => {
+						setShowSuccess(false);
+					}, 1000);
+					navigate("/admin/dashboard");
+				}, 2000);
+			}
 			console.log(postData);
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	useEffect(() => {
 		addRef.current.focus();

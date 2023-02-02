@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaClock, FaUserTie } from "react-icons/fa";
-import { AiFillCaretDown } from "react-icons/ai";
+// import { AiFillCaretDown } from "react-icons/ai";
 
 const IndividualCourse = () => {
 	const { courseID } = useParams();
@@ -15,7 +15,7 @@ const IndividualCourse = () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
 				setIndividualTrainingData(response.data.trainings);
-				// console.log(response.data.trainings);
+				console.log(response.data.trainings);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -36,7 +36,7 @@ const IndividualCourse = () => {
 					<h2>Short description: still left to be implemented on backend</h2>
 					<div className={style.Training_header_sub}>
 						<h2>
-							<FaClock /> &nbsp; Duration: {IndividualtrainingData.duration} months
+							<FaClock /> &nbsp; Duration: {IndividualtrainingData.duration}
 						</h2>
 
 						<h2>
@@ -65,36 +65,22 @@ const IndividualCourse = () => {
 						<h1>
 							Course Outline:&nbsp;<span className={style.course_overview_title_span}>{IndividualtrainingData.title}</span>
 						</h1>
-						<div className={style.arrow}>
+						{/*  //! are we keeping it?? */}
+						{/* <div className={style.arrow}>
 							<button>
 								<AiFillCaretDown />
 							</button>
-						</div>
+						</div> */}
 					</div>
 
 					<div>
 						<div className={style.course_overview_contents}>
-							<h2>Module 1: Overview of python [6 HOURS]</h2>
-							<div className={style.bulletPoints}>
-								<ul>
-									<li>
-										<p>Introductin to Python</p>
-									</li>
-									<li>
-										<p>History of python</p>
-									</li>
-									<li>
-										<p>Features of python</p>
-									</li>
-									<li>
-										<p>Installation of python</p>
-									</li>
-								</ul>
-							</div>
+							<div className={style.Syllabus} dangerouslySetInnerHTML={{ __html: IndividualtrainingData.syllabus }}></div>
 						</div>
 					</div>
 				</div>
 			</div>
+			{/* //TODO: are we gonna implement this ?? */}
 			{/* <div className={style.succesStory}>
 				<h1>Card for students who get employeed after completing this training.</h1>
 			</div> */}

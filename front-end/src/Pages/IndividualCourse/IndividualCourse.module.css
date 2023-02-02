@@ -148,7 +148,7 @@
 
 .Training_Description h1 {
     width: fit-content;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: #0f5288;
     text-align: left;
     text-transform: uppercase;
@@ -213,18 +213,25 @@
     padding-left: 25px;
 }
 
-.bulletPoints ul {
-    padding-left: 20px;
-}
 
-.bulletPoints ul li {
-    list-style: disc;
-    font-size: 1rem;
 
+.Syllabus ul li {
+    list-style: decimal;
+    margin-left: 25px;
 
 }
 
-.bulletPoints ul li::marker {
+.Training_Description {
+    color: black !important;
+}
 
-    font-size: 1em;
+.Training_Description h2 {
+    margin-bottom: 10px;
+}
+
+.Training_Description p {
+    font-size: 1.3rem;
+    text-align: justify;
+    color: black;
+    margin-top: 5px;
 }

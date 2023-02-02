@@ -1,7 +1,7 @@
 :root {
     --headingOne-size: 5rem;
     --headingOne-color: black;
-    --headingOneHighlight-color: #0f5288;
+
     --gridColumns: repeat(4, 400px);
     --gridH1-fontsize: 1.3rem;
     --gridH2-fontsize: 1rem;
@@ -34,7 +34,7 @@
 }
 
 .HeadingHighlight {
-    color: var(--headingOneHighlight-color);
+    color: #0f5288;
 }
 
 .Training {
