@@ -54,12 +54,13 @@
     font-size: 1.5rem;
     color: #0f5288;
     align-items: center;
+    cursor: pointer;
 }
+
 
 @media(max-width:1269px) {
     .Team_Wrapper {
         padding: 2rem;
-
     }
 
     .Team_Grid {
@@ -68,9 +69,7 @@
     }
 
     .Details_Grid {
-
         width: 50%;
-
     }
 }
 
