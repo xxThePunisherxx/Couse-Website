@@ -9,6 +9,10 @@
     background-position: center;
 }
 
+.Training_header_sub h2:first-child {
+    margin-right: 20px;
+}
+
 .Training_contents {
     width: 80%;
     margin: 0 auto;
@@ -40,7 +44,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;
-    width: fit-content;
+    width: 70%;
 }
 
 .training_header_btn button {
@@ -65,14 +69,10 @@
 }
 
 .Training_header_sub {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
-    width: max-content;
-}
-
-.Training_header_sub h2:nth-child(2) {
-    margin-left: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 60%;
 }
 
 .training_header_btn button {
@@ -92,6 +92,7 @@
     align-items: center;
     gap: 0.6em;
     font-weight: bold;
+    justify-content: center;
 }
 
 .training_header_btn button .arrow-wrapper {
@@ -137,7 +138,6 @@
 
 .Training_DescriptionWrapper {
     padding: 5rem;
-
 }
 
 .Training_Description {
@@ -201,15 +201,20 @@
     padding-left: 20px;
 }
 
-.course_overview_contents:first-child h2 {
+.course_overview_contents:first-child h2,
+h2,
+h3 {
     margin-top: 0px;
 }
 
-.course_overview_contents h2 {
+.course_overview_contents h2,
+h2,
+h3 {
     margin-top: 20px;
 }
 
-.course_overview_contents h2 .bulletPoints ul {
+.course_overview_contents h2 ul,
+ol {
     padding-left: 25px;
 }
 
@@ -218,11 +223,18 @@
 .Syllabus ul li {
     list-style: decimal;
     margin-left: 25px;
-
+    font-size: 1.35rem;
 }
 
+.Syllabus ol li {
+    list-style: decimal;
+    margin-left: 25px;
+    font-size: 1.35rem;
+}
+
+
 .Training_Description {
-    color: black !important;
+    color: black;
 }
 
 .Training_Description h2 {
@@ -230,8 +242,158 @@
 }
 
 .Training_Description p {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     text-align: justify;
     color: black;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 2126px) {
+    .Training_header_sub {
+        max-width: 55%;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .Training_header {
+        padding: 2rem;
+    }
+
+    .Training_header_sub {
+        max-width: 85%;
+    }
+
+    .training_header_btn {
+
+        width: 90%;
+    }
+
+    .Training_Description h1 {
+        font-size: 2rem;
+    }
+
+    .Training_DescriptionWrapper {
+        padding: .5rem;
+        font-size: 1rem;
+    }
+
+    .Training_Description,
+    .course_overview {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .Training_header {
+        padding: 1rem;
+    }
+
+    .Training_contents {
+        width: 95%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .training_header_btn {
+        width: 100%;
+    }
+
+    .Training_Description h1 {
+        font-size: 2rem;
+    }
+
+    .Training_DescriptionWrapper {
+        padding: .5rem;
+        font-size: 1rem;
+    }
+
+    .Training_Description,
+    .course_overview {
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width: 715px) {
+    .Training_header {
+        padding: .1rem;
+    }
+
+
+    .training_header_btn {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+    }
+
+    .training_header_btn button {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 200px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all ease .5s;
+        text-align: center;
+    }
+
+    .training_header_btn {
+        width: 100%;
+    }
+
+    .Training_DescriptionWrapper {
+        padding: .5rem;
+        font-size: 1rem;
+    }
+
+    .Training_Description,
+    .course_overview {
+        width: 95%;
+    }
+
+    .Training_Description h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 503px) {
+    .Training_header {
+        padding: .1rem;
+    }
+
+
+    .training_header_btn {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .training_header_btn button {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 200px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all ease .5s;
+        text-align: center;
+    }
+
+    .training_header_btn {
+        width: 100%;
+    }
+
+    .Training_DescriptionWrapper {
+        padding: .5rem;
+        font-size: 1rem;
+    }
+
+    .Training_Description,
+    .course_overview {
+        width: 95%;
+    }
+
+    .Training_Description h1 {
+        font-size: 2.2rem;
+    }
 }

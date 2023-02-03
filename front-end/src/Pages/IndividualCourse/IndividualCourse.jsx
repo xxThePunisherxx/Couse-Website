@@ -62,9 +62,10 @@ const IndividualCourse = () => {
 				</div>
 				<div className={style.course_overview}>
 					<div className={style.BannerHeading}>
-						<h1>
+						<h1>Course Outline</h1>
+						{/* <h1>
 							Course Outline:&nbsp;<span className={style.course_overview_title_span}>{IndividualtrainingData.title}</span>
-						</h1>
+						</h1> */}
 						{/*  //! are we keeping it?? */}
 						{/* <div className={style.arrow}>
 							<button>
