@@ -23,6 +23,7 @@ import AdminCourseListPage from "./Pages/Admin Course Page/AdminCourseListPage";
 
 import RequireAuth from "./Components/RequireAuth";
 import Addadmin from "./Pages/Add admin/Addadmin";
+import Team from "./Pages/Our Team/Team";
 
 function App() {
 	return (
@@ -31,7 +32,7 @@ function App() {
 				<Route path="/" element={<Homepage />} />
 				<Route path="/courses" element={<Courses />} />
 				<Route path="/enroll" element={<EnrollForm />} />
-				<Route path="/team" element={<Comming />} />
+				<Route path="/team" element={<Team />} />
 				<Route path="/aboutUS" element={<Comming />} />
 				<Route path="contact" element={<Comming />} />
 				<Route path="/gallery" element={<Comming />} />
