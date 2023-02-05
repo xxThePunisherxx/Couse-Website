@@ -46,10 +46,10 @@ const AddCourse = () => {
 			duration: enterdData.course_Duration,
 			priority: enterdData.course_Priority,
 			image: enterdData.course_Image,
-			rating: enterdData.course_Rating,
+			ratings: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
-			// syllabus: ckStructure,
+			syllabus: ckStructure,
 		};
 		try {
 			const response = await axios.post("http://localhost:8080/api/training/add", postData);
@@ -62,7 +62,7 @@ const AddCourse = () => {
 					navigate("/admin/dashboard");
 				}, 2000);
 			}
-			console.log(postData);
+			// console.log(postData);
 		} catch (error) {
 			console.log(error);
 		}

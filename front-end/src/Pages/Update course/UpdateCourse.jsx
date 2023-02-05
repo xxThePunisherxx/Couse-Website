@@ -25,8 +25,11 @@ const RemoveCourse = () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
 				setIndividualTrainingData(response.data.trainings);
-				// console.log(response.data.trainings);
-				setIndividualTrainingCat(response.data.trainings.category);
+				setIndividualTrainingCat({ _id: null, course_type: "Course Category deleted." });
+				if (response.data.trainings.category) {
+					setIndividualTrainingCat(response.data.trainings.category);
+					console.log(response.data.trainings.category);
+				}
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -68,7 +71,7 @@ const RemoveCourse = () => {
 			duration: enterdData.course_Duration,
 			priority: enterdData.course_Priority,
 			image: enterdData.course_Image,
-			rating: enterdData.course_Rating,
+			ratings: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
 			syllabus: ckStructure,
@@ -129,7 +132,7 @@ const RemoveCourse = () => {
 					<h1>Course Priority</h1>
 					<input name="course_Priority" defaultValue={IndividualtrainingData.priority} type="number" required></input>
 					<h1>Rating</h1>
-					<input name="course_Rating" defaultValue={IndividualtrainingData.rating} type="number" required></input>
+					<input name="course_Rating" defaultValue={IndividualtrainingData.ratings} type="number" required></input>
 					<h1>Career Path</h1>
 					<input name="course_careerPath" defaultValue={IndividualtrainingData.career} type="text" required></input>
 					<h1>Course Category</h1>
@@ -143,7 +146,7 @@ const RemoveCourse = () => {
 							</option>
 						))}
 					</select>
-					<button className={style.Spantwo}>Create</button>
+					<button className={style.Spantwo}>Update</button>
 				</form>
 			</div>
 		</div>
