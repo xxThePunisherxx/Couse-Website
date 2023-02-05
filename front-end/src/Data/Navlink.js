@@ -24,21 +24,21 @@ export const Links = [
 		LinkName: "Contact",
 		Linkto: "/contact",
 	},
-	{
-		Key: 9,
-		LinkName: "Career",
-		Linkto: "/career",
-	},
-	{
-		Key: 6,
-		LinkName: "Gallery",
-		Linkto: "/gallery",
-	},
-	{
-		Key: 7,
-		LinkName: "Verify",
-		Linkto: "/verify",
-	},
+	// {
+	// 	Key: 9,
+	// 	LinkName: "Career",
+	// 	Linkto: "/career",
+	// },
+	// {
+	// 	Key: 6,
+	// 	LinkName: "Gallery",
+	// 	Linkto: "/gallery",
+	// },
+	// {
+	// 	Key: 7,
+	// 	LinkName: "Verify",
+	// 	Linkto: "/verify",
+	// },
 	{
 		Key: 8,
 		LinkName: "Our Services",

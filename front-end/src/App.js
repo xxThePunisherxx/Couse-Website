@@ -24,6 +24,7 @@ import AdminCourseListPage from "./Pages/Admin Course Page/AdminCourseListPage";
 import RequireAuth from "./Components/RequireAuth";
 import Addadmin from "./Pages/Add admin/Addadmin";
 import Team from "./Pages/Our Team/Team";
+import Contact from "./Pages/Contact us/Contact";
 
 function App() {
 	return (
@@ -34,30 +35,30 @@ function App() {
 				<Route path="/enroll" element={<EnrollForm />} />
 				<Route path="/team" element={<Team />} />
 				<Route path="/aboutUS" element={<Comming />} />
-				<Route path="contact" element={<Comming />} />
+				<Route path="contact" element={<Contact />} />
 				<Route path="/gallery" element={<Comming />} />
-				<Route path="/verify" element={<Comming />} />
-				<Route path="/career" element={<Comming />} />
+				{/* <Route path="/verify" element={<Comming />} /> */}
+				{/* <Route path="/career" element={<Comming />} /> */}
 				<Route path="/services" element={<Comming />} />
 				<Route path="/allClients" element={<ClientsAll />} />
 				<Route path="/test" element={<Test />} /> just for quick testing of page
-				<Route path="*" element={<NotFound />} />
 				<Route path="/course-view/:courseID" element={<IndividualCourse />} />
+				<Route path="*" element={<NotFound />} />
 			</Route>
 			<Route>
 				<Route path="/admin" element={<Admin />} />
-				<Route element={<RequireAuth allowedRoles={"admin"} />}>
-					<Route path="/admin" element={<AdminLayout />}>
-						<Route path="addCourse" element={<AddCourse />} />
-						<Route path="addAdmin" element={<Addadmin />} />
-						<Route path="updateCourse/:courseID" element={<Updatecourse />} />
-						<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
-						<Route path="dashboard" element={<AdminDashboard />} />
-						<Route path="addCategory" element={<AddCourseCate />} />
-						<Route path="allCourse" element={<AdminCourseListPage />} />
-						{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
-					</Route>
+				{/* <Route element={<RequireAuth allowedRoles={"admin"} />}> */}
+				<Route path="/admin" element={<AdminLayout />}>
+					<Route path="addCourse" element={<AddCourse />} />
+					<Route path="addAdmin" element={<Addadmin />} />
+					<Route path="updateCourse/:courseID" element={<Updatecourse />} />
+					<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
+					<Route path="dashboard" element={<AdminDashboard />} />
+					<Route path="addCategory" element={<AddCourseCate />} />
+					<Route path="allCourse" element={<AdminCourseListPage />} />
+					{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
 				</Route>
+				{/* </Route> */}
 			</Route>
 		</Routes>
 	);
