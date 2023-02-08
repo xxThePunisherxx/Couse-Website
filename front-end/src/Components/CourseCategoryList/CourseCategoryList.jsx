@@ -59,7 +59,9 @@ const CourseCategoryList = () => {
 					</div>
 				))}
 			</div>
-			<button className={style.new}>Add Course Category</button>
+			<Link to={"/admin/addCategory"}>
+				<button className={style.new}>Add Course Category</button>
+			</Link>
 		</div>
 	);
 };
