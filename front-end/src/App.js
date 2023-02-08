@@ -47,18 +47,18 @@ function App() {
 			</Route>
 			<Route>
 				<Route path="/admin" element={<Admin />} />
-				{/* <Route element={<RequireAuth allowedRoles={"admin"} />}> */}
-				<Route path="/admin" element={<AdminLayout />}>
-					<Route path="addCourse" element={<AddCourse />} />
-					<Route path="addAdmin" element={<Addadmin />} />
-					<Route path="updateCourse/:courseID" element={<Updatecourse />} />
-					<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
-					<Route path="dashboard" element={<AdminDashboard />} />
-					<Route path="addCategory" element={<AddCourseCate />} />
-					<Route path="allCourse" element={<AdminCourseListPage />} />
-					{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
+				<Route element={<RequireAuth allowedRoles={"admin"} />}>
+					<Route path="/admin" element={<AdminLayout />}>
+						<Route path="addCourse" element={<AddCourse />} />
+						<Route path="addAdmin" element={<Addadmin />} />
+						<Route path="updateCourse/:courseID" element={<Updatecourse />} />
+						<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
+						<Route path="dashboard" element={<AdminDashboard />} />
+						<Route path="addCategory" element={<AddCourseCate />} />
+						<Route path="allCourse" element={<AdminCourseListPage />} />
+						{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
+					</Route>
 				</Route>
-				{/* </Route> */}
 			</Route>
 		</Routes>
 	);

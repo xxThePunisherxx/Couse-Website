@@ -38,8 +38,14 @@ const AdminCourseList = () => {
 
 	const handleConfirm = async () => {
 		//delete functions when confirmed by the user.
-		let response = await authAxios.delete("delete/" + ToDelete);
+		// console.log(auth.Token);
 		try {
+			let response = await authAxios.delete("delete/" + ToDelete, {
+				headers: {
+					Authorization: `${auth.Token}`,
+					withCredentails: true,
+				},
+			});
 			if (response.status === 201) {
 				setTimeout(() => {
 					setshowSuccecss(true);

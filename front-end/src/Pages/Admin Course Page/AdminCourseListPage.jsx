@@ -6,8 +6,11 @@ import uuid from "react-uuid";
 import { Link } from "react-router-dom";
 import useFetch from "../../Utils/Hooks/fetch";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const AdminCourseListPage = () => {
+	const { auth } = useAuth();
+
 	const [showSuccecss, setshowSuccecss] = useState(false);
 	const [ShowconfirmDelete, setShowconfirmDelete] = useState(false);
 	const [ToDelete, setToDelete] = useState(false);
@@ -23,7 +26,12 @@ const AdminCourseListPage = () => {
 		setShowconfirmDelete(false);
 	};
 	const handleConfirm = async () => {
-		let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete);
+		let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete, {
+			headers: {
+				Authorization: `${auth.Token}`,
+				withCredentails: true,
+			},
+		});
 		try {
 			if (response.status === 201) {
 				setTimeout(() => {

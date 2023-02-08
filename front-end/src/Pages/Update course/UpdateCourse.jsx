@@ -7,9 +7,11 @@ import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
+import useAuth from "../../hooks/useAuth";
 
 const RemoveCourse = () => {
 	const navigate = useNavigate();
+	const { auth } = useAuth();
 
 	const UpdateRef = useRef();
 	const { courseID } = useParams();
@@ -78,7 +80,12 @@ const RemoveCourse = () => {
 		};
 		console.log(postData);
 		try {
-			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData);
+			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData, {
+				headers: {
+					Authorization: `${auth.Token}`,
+					withCredentails: true,
+				},
+			});
 			if (response.status === 201) {
 				setTimeout(() => {
 					navigate("/admin/dashboard");

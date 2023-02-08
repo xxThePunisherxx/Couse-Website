@@ -6,24 +6,24 @@ import { useNavigate } from "react-router-dom";
 import uuid from "react-uuid";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
+import useAuth from "../../hooks/useAuth";
 
 const AddCourse = () => {
+	const { auth } = useAuth();
 	const addRef = useRef();
 	const navigate = useNavigate();
 	const [trainingCategory, setTrainingCategory] = useState([{}]);
-
 	const [ckPara, setCkPara] = useState("");
 	const [ckStructure, setCkStructure] = useState("");
-	// eslint-disable-next-line no-unused-vars
 	const [showSuccess, setShowSuccess] = useState(false);
+	const [selectedFile, setSelectedFile] = useState();
+	const [uploadedURl, setUploadedURl] = useState("");
 
 	useEffect(() => {
-		//get list of all training categories from  the db
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
 				setTrainingCategory(response.data.categorys);
-				// console.log(response.data.categorys);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -45,14 +45,19 @@ const AddCourse = () => {
 			description: ckPara,
 			duration: enterdData.course_Duration,
 			priority: enterdData.course_Priority,
-			image: enterdData.course_Image,
+			image: `http://${uploadedURl}`,
 			ratings: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
 			syllabus: ckStructure,
 		};
 		try {
-			const response = await axios.post("http://localhost:8080/api/training/add", postData);
+			const response = await axios.post("http://localhost:8080/api/training/add", postData, {
+				headers: {
+					Authorization: `${auth.Token}`,
+					withCredentails: true,
+				},
+			});
 			if (response.status === 201) {
 				setShowSuccess(true);
 				setTimeout(() => {
@@ -62,11 +67,32 @@ const AddCourse = () => {
 					navigate("/admin/dashboard");
 				}, 2000);
 			}
-			// console.log(postData);
 		} catch (error) {
 			console.log(error);
 		}
 	};
+	const fileSelectedHandler = async (event) => {
+		setSelectedFile(event.target.files[0]);
+	};
+	const handleUpload = async (event) => {
+		event.preventDefault();
+		const fd = new FormData();
+		fd.append("file", selectedFile);
+		try {
+			let response = await axios.post("http://localhost:8080/api/file/single", fd, {
+				headers: {
+					Authorization: `${auth.Token}`,
+					withCredentails: true,
+				},
+			});
+			console.log(response.data.path.path);
+			setUploadedURl(response.data.path.path);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	//* This will put cursor to first input feild on the form.
 	useEffect(() => {
 		addRef.current.focus();
 	}, []);
@@ -92,7 +118,6 @@ const AddCourse = () => {
 							onChange={(event, editor) => {
 								const dataPara = editor.getData();
 								setCkPara(dataPara);
-								// console.log({ event, editor, data });
 							}}
 						/>
 
@@ -107,7 +132,10 @@ const AddCourse = () => {
 						/>
 
 						<h1>Course Image</h1>
-						<input name="course_Image" type="text" required></input>
+						<div className={style.ImageUpload}>
+							<input name="course_Image" type="file" required onChange={fileSelectedHandler}></input>
+							<button onClick={handleUpload}>Upload image</button>
+						</div>
 						<h1>Course Priority</h1>
 						<input name="course_Priority" type="number" required></input>
 						<h1>Rating</h1>
@@ -128,6 +156,7 @@ const AddCourse = () => {
 				</div>
 			</div>
 			{showSuccess && (
+				//* Success Message on succesfull course
 				<div className={style.successBoard}>
 					<h1>Course Added succesfully</h1>
 				</div>
