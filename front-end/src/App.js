@@ -25,6 +25,7 @@ import RequireAuth from "./Components/RequireAuth";
 import Addadmin from "./Pages/Add admin/Addadmin";
 import Team from "./Pages/Our Team/Team";
 import Contact from "./Pages/Contact us/Contact";
+import Unauthorized from "./Pages/Unauthorized/Unauthorized";
 
 function App() {
 	return (
@@ -40,6 +41,7 @@ function App() {
 				<Route path="/gallery" element={<Comming />} />
 				<Route path="/services" element={<Comming />} />
 				<Route path="/allClients" element={<ClientsAll />} />
+				<Route path="/unauthorized" element={<Unauthorized />} />
 				<Route path="/test" element={<Test />} /> just for quick testing of page
 				<Route path="/course-view/:courseID" element={<IndividualCourse />} />
 				<Route path="*" element={<NotFound />} />
