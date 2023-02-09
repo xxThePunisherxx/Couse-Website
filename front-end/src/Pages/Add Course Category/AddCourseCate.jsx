@@ -56,13 +56,13 @@ const AddCourseCate = () => {
 			</div>
 			{showSuccess && (
 				//* Success Message on succesfull course
-				<div className={style.successBoard}>
+				<div className="successBoard">
 					<h1>Course category Added succesfully</h1>
 				</div>
 			)}
 			{showFail && (
 				//* Fail Message on succesfull course
-				<div className={style.FailedBoard}>
+				<div className="FailedBoard">
 					<h1>Something went wrong. Please try again.</h1>
 				</div>
 			)}

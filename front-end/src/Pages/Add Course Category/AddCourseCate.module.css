@@ -74,7 +74,7 @@
     grid-column: 1 / span 2;
 }
 
-.successBoard,
+/* .successBoard,
 .FailedBoard {
     position: fixed;
     top: 1;
@@ -94,7 +94,7 @@
 
 .FailedBoard {
     background-color: red;
-}
+} */
 
 
 

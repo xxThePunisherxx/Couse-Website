@@ -16,6 +16,9 @@ const AddCourse = () => {
 	const [ckPara, setCkPara] = useState("");
 	const [ckStructure, setCkStructure] = useState("");
 	const [showSuccess, setShowSuccess] = useState(false);
+	const [showFailed, setShowFailed] = useState(false);
+	const [showSuccessUpload, setShowSuccessUpload] = useState(false);
+	const [showFailedUpload, setShowFailedUpload] = useState(false);
 	const [selectedFile, setSelectedFile] = useState();
 	const [uploadedURl, setUploadedURl] = useState("");
 
@@ -23,7 +26,7 @@ const AddCourse = () => {
 		const fetchData = async () => {
 			try {
 				let response = await axios.get("http://localhost:8080/api/category");
-				setTrainingCategory(response.data.categorys);
+				setTrainingCategory(response?.data?.categorys);
 			} catch (error) {
 				if (error.response) {
 					console.log(error.response.status);
@@ -67,8 +70,11 @@ const AddCourse = () => {
 					navigate("/admin/dashboard");
 				}, 2000);
 			}
-		} catch (error) {
-			console.log(error);
+		} catch (err) {
+			setShowFailed(true);
+			setTimeout(() => {
+				setShowFailed(false);
+			}, 1000);
 		}
 	};
 	const fileSelectedHandler = async (event) => {
@@ -85,15 +91,21 @@ const AddCourse = () => {
 					withCredentails: true,
 				},
 			});
-			console.log(response.data.path.path);
 			setUploadedURl(response.data.path.path);
+			setShowSuccessUpload(true);
+			setTimeout(() => {
+				setShowSuccessUpload(false);
+			}, 1000);
 		} catch (err) {
-			console.log(err);
+			setShowFailedUpload(true);
+			setTimeout(() => {
+				setShowFailedUpload(false);
+			}, 1000);
 		}
 	};
 
-	//* This will put cursor to first input feild on the form.
 	useEffect(() => {
+		//* This will put cursor to first input feild on the form.
 		addRef.current.focus();
 	}, []);
 
@@ -156,9 +168,27 @@ const AddCourse = () => {
 				</div>
 			</div>
 			{showSuccess && (
-				//* Success Message on succesfull course
-				<div className={style.successBoard}>
+				//* Success Message on succesfull course addition
+				<div className="successBoard">
 					<h1>Course Added succesfully</h1>
+				</div>
+			)}
+			{showSuccessUpload && (
+				//* Success Message on succesfull course addition
+				<div className="successBoard">
+					<h1>Image uploaded succesfully</h1>
+				</div>
+			)}
+			{showFailed && (
+				//* failed Message on course addition
+				<div className="FailedBoard">
+					<h1>Could not add course. Please try again.</h1>
+				</div>
+			)}
+			{showFailedUpload && (
+				//* failed Message on course addition
+				<div className="FailedBoard">
+					<h1>Could not upload image. Please try again.</h1>
 				</div>
 			)}
 		</>

@@ -29,14 +29,14 @@ const Courses = () => {
 			)}
 			<div className={style.TrainingGrid}>
 				{TrrainingDataArr.map((item) => (
-					<Link to={`/course-view/${item._id}`} key={item._id}>
-						<div className={style.Training} key={item._id}>
-							<img src={item.image} alt={item.Title} />
-							<h1>{item.title}</h1>
-							<h2>Duration: {item.duration}</h2>
+					<div className={style.Training} key={item._id}>
+						<img src={item.image} alt={item.Title} />
+						<h1>{item.title}</h1>
+						<h2>Duration: {item.duration}</h2>
+						<Link to={`/course-view/${item._id}`}>
 							<button>View Details</button>
-						</div>
-					</Link>
+						</Link>
+					</div>
 				))}
 			</div>
 		</div>
