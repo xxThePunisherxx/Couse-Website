@@ -100,10 +100,11 @@ const AdminCourseList = () => {
 							</div>
 						))}
 				</div>
-
-				<Link to={"/admin/allCourse"}>
-					<button className={style.new}>View All</button>
-				</Link>
+				{!ispending && (
+					<Link to={"/admin/allCourse"}>
+						<button className={style.new}>View All</button>
+					</Link>
+				)}
 			</div>
 			{ShowconfirmDelete && (
 				<div className={style.popup}>
