@@ -1,8 +1,12 @@
 import React from "react";
 import style from "./Addadmin.module.css";
 import { useRef, useEffect, useState } from "react";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 const Addadmin = () => {
+	const { auth } = useAuth();
+
 	const [showEmailerr, setshowEmailerr] = useState(false);
 	const [showpwdErr, setShowpwdErr] = useState(false);
 	const [showMatcherr, setShowMatcherr] = useState(false);
@@ -14,7 +18,7 @@ const Addadmin = () => {
 		addAdminRef.current.focus();
 	}, []);
 
-	const handlesubmit = (e) => {
+	const handlesubmit = async (e) => {
 		const emailRegex = new RegExp(
 			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
@@ -52,6 +56,13 @@ const Addadmin = () => {
 		if (isValidEmail && isValidPassword && enterdData.Password === enterdData.retype_password) {
 			console.log(enterdData);
 			console.log("validated and ready to be sent to server");
+			const response = await axios.post("http://localhost:8080/api/user/register", enterdData, {
+				headers: {
+					Authorization: `Bearer ${auth.Token}`,
+					withCredentails: true,
+				},
+			});
+			console.log(response);
 		}
 	};
 

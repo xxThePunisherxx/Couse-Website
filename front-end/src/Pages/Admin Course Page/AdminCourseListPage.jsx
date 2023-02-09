@@ -17,7 +17,6 @@ const AdminCourseListPage = () => {
 	const { data: trainingResponse } = useFetch("http://localhost:8080/api/training");
 
 	const trainingData = trainingResponse.training;
-
 	const handleDeletePopup = (id) => {
 		setShowconfirmDelete(true);
 		setToDelete(id);
@@ -28,7 +27,7 @@ const AdminCourseListPage = () => {
 	const handleConfirm = async () => {
 		let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete, {
 			headers: {
-				Authorization: `${auth.Token}`,
+				Authorization: `Bearer ${auth.Token}`,
 				withCredentails: true,
 			},
 		});

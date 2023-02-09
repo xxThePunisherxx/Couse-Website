@@ -45,7 +45,7 @@ const AddCourse = () => {
 			description: ckPara,
 			duration: enterdData.course_Duration,
 			priority: enterdData.course_Priority,
-			image: `http://${uploadedURl}`,
+			image: uploadedURl,
 			ratings: enterdData.course_Rating,
 			category: enterdData.dropdown,
 			career: enterdData.course_careerPath,
@@ -54,7 +54,7 @@ const AddCourse = () => {
 		try {
 			const response = await axios.post("http://localhost:8080/api/training/add", postData, {
 				headers: {
-					Authorization: `${auth.Token}`,
+					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
 				},
 			});
@@ -81,7 +81,7 @@ const AddCourse = () => {
 		try {
 			let response = await axios.post("http://localhost:8080/api/file/single", fd, {
 				headers: {
-					Authorization: `${auth.Token}`,
+					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
 				},
 			});

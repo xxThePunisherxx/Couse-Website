@@ -82,7 +82,7 @@ const RemoveCourse = () => {
 		try {
 			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData, {
 				headers: {
-					Authorization: `${auth.Token}`,
+					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
 				},
 			});

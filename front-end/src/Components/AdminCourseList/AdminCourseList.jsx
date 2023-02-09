@@ -42,7 +42,7 @@ const AdminCourseList = () => {
 		try {
 			let response = await authAxios.delete("delete/" + ToDelete, {
 				headers: {
-					Authorization: `${auth.Token}`,
+					Authorization: `Bearer ${auth.accessToken}`,
 					withCredentails: true,
 				},
 			});
@@ -68,7 +68,7 @@ const AdminCourseList = () => {
 					{ispending && (
 						<div className={style.TrainingGrid}>
 							{dummyArr.map(() => (
-								<div className={style.Training}>
+								<div key={uuid()} className={style.Training}>
 									<div className={style.Skel}>
 										<div className={style.imgDiv}></div>
 										<div className={style.H1Div}></div>
