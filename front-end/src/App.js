@@ -29,6 +29,7 @@ import Contact from "./Pages/Contact us/Contact";
 function App() {
 	return (
 		<Routes>
+			{/* These are unprotected routes */}
 			<Route path="/" element={<ClientLayout />}>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/courses" element={<Courses />} />
@@ -37,8 +38,6 @@ function App() {
 				<Route path="/aboutUS" element={<Comming />} />
 				<Route path="contact" element={<Contact />} />
 				<Route path="/gallery" element={<Comming />} />
-				{/* <Route path="/verify" element={<Comming />} /> */}
-				{/* <Route path="/career" element={<Comming />} /> */}
 				<Route path="/services" element={<Comming />} />
 				<Route path="/allClients" element={<ClientsAll />} />
 				<Route path="/test" element={<Test />} /> just for quick testing of page
@@ -46,17 +45,24 @@ function App() {
 				<Route path="*" element={<NotFound />} />
 			</Route>
 			<Route>
-				<Route path="/admin" element={<Admin />} />
-				<Route element={<RequireAuth allowedRoles={"admin"} />}>
+				{/* These are protected routes */}
+				<Route path="/adminLogin" element={<Admin />} />
+				<Route element={<RequireAuth allowedRoles={["superAdmin", "admin"]} />}>
+					{/* both admin and super-admin can access these routes */}
 					<Route path="/admin" element={<AdminLayout />}>
 						<Route path="addCourse" element={<AddCourse />} />
-						<Route path="addAdmin" element={<Addadmin />} />
 						<Route path="updateCourse/:courseID" element={<Updatecourse />} />
 						<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
 						<Route path="dashboard" element={<AdminDashboard />} />
 						<Route path="addCategory" element={<AddCourseCate />} />
 						<Route path="allCourse" element={<AdminCourseListPage />} />
-						{/* <Route path="side" element={<AdminSidebar />} />  just for testing sidebar component, to be removed at final  stage*/}
+						{/* <Route path="side" element={<AdminSidebar />} />  //! just for testing sidebar component, to be removed at final  stage*/}
+					</Route>
+				</Route>
+				<Route element={<RequireAuth allowedRoles={["superAdmin"]} />}>
+					{/* only super-admin can access these routes */}
+					<Route path="/admin" element={<AdminLayout />}>
+						<Route path="addAdmin" element={<Addadmin />} />
 					</Route>
 				</Route>
 			</Route>
