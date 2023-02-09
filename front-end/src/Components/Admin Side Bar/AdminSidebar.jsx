@@ -6,11 +6,14 @@ import { AiOutlineAppstoreAdd, AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { IoPersonAddOutline } from "react-icons/io5";
 import Logo from "../../assets/Logo.png";
+import useAuth from "../../hooks/useAuth";
 
 const AdminSidebar = () => {
 	const handleClick = () => {
 		localStorage.clear();
 	};
+	const { auth } = useAuth();
+
 	return (
 		<div className={style.AdminSidebarWrapper}>
 			<div className={style.AdminSidebar}>
@@ -38,16 +41,18 @@ const AdminSidebar = () => {
 							<AiOutlineAppstoreAdd /> &nbsp;Add Course
 						</h1>
 					</NavLink>
-					<NavLink
-						className={({ isActive }) => {
-							return "AdminDash-" + (isActive ? "Active" : "Inactive");
-						}}
-						to={"/admin/addAdmin"}
-					>
-						<h1>
-							<IoPersonAddOutline /> &nbsp;Add Admin
-						</h1>
-					</NavLink>
+					{auth.Role === "superAdmin" && (
+						<NavLink
+							className={({ isActive }) => {
+								return "AdminDash-" + (isActive ? "Active" : "Inactive");
+							}}
+							to={"/admin/addAdmin"}
+						>
+							<h1>
+								<IoPersonAddOutline /> &nbsp;Add Admin
+							</h1>
+						</NavLink>
+					)}
 					<NavLink
 						className={({ isActive }) => {
 							return "AdminDash-" + (isActive ? "Active" : "Inactive");
@@ -58,7 +63,6 @@ const AdminSidebar = () => {
 							<AiOutlineAppstoreAdd /> &nbsp;Add Training Category
 						</h1>
 					</NavLink>
-
 					<NavLink
 						className={({ isActive }) => {
 							return "AdminDash-" + (isActive ? "Active" : "Inactive");
