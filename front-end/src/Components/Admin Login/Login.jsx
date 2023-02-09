@@ -42,14 +42,8 @@ const Login = () => {
 		};
 
 		try {
-			console.log("try??");
-			const response = await axios.post("http://localhost:8080/api/user/login", postData, true, {
-				withCredentials: true,
-				crossorigin: true,
-
-				headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
-				credentials: "include",
-			});
+			const response = await axios.post("http://localhost:8080/api/user/login", postData);
+			console.log(response);
 
 			const accessToken = response?.data?.token;
 			const role = response?.data?.user.role;
