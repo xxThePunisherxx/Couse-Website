@@ -1,20 +1,30 @@
+.AdminList h1 {
+    font-size: 5rem;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 20px 0;
+}
+
+.HeadingHighlight {
+    color: #0f5288;
+}
+
 .allAdminGrid {
     padding: 1rem;
+
 }
 
 .admin_Table {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 10px;
 }
 
-.admin_Table img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-}
 
 .admin_Table h1 {
     font-size: 1.3rem;
+    text-align: left;
+    margin: 0;
 }
 
 .admin_Table button {
@@ -35,8 +45,8 @@
 .new {
     cursor: pointer;
     margin: 0 auto;
-    margin-top: 20px;
-    font-size: var(--submit-fontSize);
+    margin-top: 90px;
+    font-size: 2rem;
     width: fit-content;
     display: flex;
     padding: 0.6em 1.1em;
@@ -52,4 +62,37 @@
 .new:hover {
     background-color: #0071e2;
     color: black;
+}
+
+.Skel {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.Training:first-child {
+    margin-top: 50px;
+}
+
+.Skel .H1Div,
+.H2Div {
+    width: 90%;
+    height: 39px;
+    padding: 15px;
+    background: linear-gradient(120deg,
+            #e5e5e5 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: Load 2s infinite;
+    margin: 10px auto;
+    border-radius: 20px;
+
+}
+
+@keyframes Load {
+    100% {
+        background-position: -100% 0;
+    }
 }
