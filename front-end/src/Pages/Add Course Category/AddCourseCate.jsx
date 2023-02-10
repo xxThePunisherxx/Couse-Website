@@ -3,6 +3,7 @@ import style from "./AddCourseCate.module.css";
 import { useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import MessageBoard from "../../Components/Message Board/MessageBoard";
 
 const AddCourseCate = () => {
 	const [showSuccess, setShowSuccess] = useState(false);
@@ -55,16 +56,12 @@ const AddCourseCate = () => {
 				</div>
 			</div>
 			{showSuccess && (
-				//* Success Message on succesfull course
-				<div className="successBoard">
-					<h1>Course category Added succesfully</h1>
-				</div>
+				//* Success Message
+				<MessageBoard Message_type="successBoard" Message="Course category Added succesfully" />
 			)}
 			{showFail && (
-				//* Fail Message on succesfull course
-				<div className="FailedBoard">
-					<h1>Something went wrong. Please try again.</h1>
-				</div>
+				//* Fail Message
+				<MessageBoard Message_type="FailedBoard" Message="Something went wrong. Please try again." />
 			)}
 		</>
 	);

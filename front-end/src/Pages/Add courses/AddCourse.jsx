@@ -7,6 +7,7 @@ import uuid from "react-uuid";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
 import useAuth from "../../hooks/useAuth";
+import MessageBoard from "../../Components/Message Board/MessageBoard";
 
 const AddCourse = () => {
 	const { auth } = useAuth();
@@ -169,27 +170,19 @@ const AddCourse = () => {
 			</div>
 			{showSuccess && (
 				//* Success Message on succesfull course addition
-				<div className="successBoard">
-					<h1>Course Added succesfully</h1>
-				</div>
+				<MessageBoard Message_type="successBoard" Message="Course Added succesfully" />
 			)}
 			{showSuccessUpload && (
 				//* Success Message on succesfull course addition
-				<div className="successBoard">
-					<h1>Image uploaded succesfully</h1>
-				</div>
+				<MessageBoard Message_type="successBoard" Message="Image uploaded succesfully" />
 			)}
 			{showFailed && (
 				//* failed Message on course addition
-				<div className="FailedBoard">
-					<h1>Could not add course. Please try again.</h1>
-				</div>
+				<MessageBoard Message_type="FailedBoard" Message="Could not add course. Please try again." />
 			)}
 			{showFailedUpload && (
 				//* failed Message on course addition
-				<div className="FailedBoard">
-					<h1>Could not upload image. Please try again.</h1>
-				</div>
+				<MessageBoard Message_type="FailedBoard" Message="Could not upload image. Please try again." />
 			)}
 		</>
 	);
