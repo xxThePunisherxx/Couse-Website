@@ -1,7 +1,5 @@
 .Categories_Wrapper {
     margin-top: 50px;
-    display: grid;
-    justify-items: center;
 }
 
 .Categories_Wrapper h1 {
@@ -10,27 +8,30 @@
     text-align: center;
 }
 
-.Categories_Grid {
+.Heading_Highlight {
+    color: #0f5288;
+}
 
+/* .Categories_Grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     column-gap: 10px;
     row-gap: 10px;
 
+} */
+.Categories_Card {
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .Categories_Card h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     padding: 0rem;
+    text-align: left;
+    font-weight: 400;
 }
 
-.Categories_Card {
-
-    padding: 2rem;
-    border-radius: 20px;
-    background-color: rgba(119, 122, 122, 0.228);
-
-}
 
 .Categories_Card button {
     border: none;
@@ -50,28 +51,62 @@
     color: red;
 }
 
-.new {
+.Category_Table_Header h1 {
+    font-size: 1.8rem;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
 
+.new {
+    /* Add category button   */
     cursor: pointer;
-    margin: 0 auto;
-    margin-top: 20px;
-    font-size: var(--submit-fontSize);
-    width: fit-content;
+    font-size: 2rem;
     display: flex;
     padding: 0.6em 1.1em;
     gap: 0.4rem;
     font-weight: bold;
     background-color: #0f5288;
     border-radius: 10px;
-    transition: all ease-in .2s;
-
     color: white;
     border: none;
-    margin: 50px 0;
+    margin: 50px auto;
     transition: all ease .2s;
 }
 
 .new:hover {
     background-color: #0071e2;
     color: black;
+}
+
+
+
+.TrainingGrid {
+    display: grid;
+    grid-template-columns: .6fr .2fr;
+    column-gap: 20px;
+    margin-bottom: 50px;
+}
+
+.Skel .H1Div {
+    /* width: 20%; */
+    height: 20px;
+    padding: 2rem;
+    background: linear-gradient(120deg,
+            #e5e5e5 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: Load 2s infinite;
+    margin: 10px auto;
+    border-radius: 20px;
+}
+
+
+@keyframes Load {
+    100% {
+        background-position: -100% 0;
+    }
 }

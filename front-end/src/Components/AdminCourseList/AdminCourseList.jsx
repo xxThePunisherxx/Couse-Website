@@ -12,15 +12,6 @@ import MessageBoard from "../../Components/Message Board/MessageBoard";
 const AdminCourseList = () => {
 	const { auth } = useAuth();
 	const dummyArr = [0, 1, 2, 3]; // just for adding skeleton.
-
-	const authAxios = axios.create({
-		baseURL: "http://localhost:8080/api/training/",
-		headers: {
-			Authorization: `Bearer ${auth.accessToken}`,
-			withCredentails: true,
-		},
-	});
-
 	const [showSuccecss, setshowSuccecss] = useState(false);
 	const [showFail, setShowFail] = useState(false);
 
@@ -40,12 +31,10 @@ const AdminCourseList = () => {
 	};
 
 	const handleConfirm = async () => {
-		//delete functions when confirmed by the user.
-		// console.log(auth.Token);
 		try {
-			let response = await authAxios.delete("delete/" + ToDelete, {
+			let response = await axios.delete("http://localhost:8080/api/training/delete/" + ToDelete, {
 				headers: {
-					Authorization: `Bearer ${auth.accessToken}`,
+					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
 				},
 			});
@@ -70,7 +59,13 @@ const AdminCourseList = () => {
 		<>
 			<div>
 				<div className={style.allCourseWrapper}>
-					<h1>Active Courses</h1>
+					<div className={style.allCourseWrapper_Heading}>
+						<h1>
+							Active
+							<span className={style.Heading_Highlight}>Courses</span>
+						</h1>
+					</div>
+
 					<div className={style.allCourseGrid}>
 						{ispending && (
 							<div className={style.TrainingGrid}>

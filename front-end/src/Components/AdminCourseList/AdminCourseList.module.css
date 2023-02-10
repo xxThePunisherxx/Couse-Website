@@ -1,3 +1,12 @@
+.Heading_Highlight {
+    color: #0f5288;
+}
+
+.allCourseWrapper_Heading h1 {
+    font-size: 5rem;
+    text-transform: capitalize;
+}
+
 .allCourseWrapper {
     display: grid;
     place-items: center;

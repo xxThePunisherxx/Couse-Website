@@ -2,14 +2,13 @@ import React from "react";
 import style from "./AdminList.module.css";
 import { MdModeEditOutline, MdDeleteSweep } from "react-icons/md";
 import useFetchAuth from "../../Utils/Hooks/fetchAuth";
-
 import uuid from "react-uuid";
+import { Link } from "react-router-dom";
 
 const AdminList = () => {
 	const dummyArr = [0, 1, 2]; // just for adding skeleton.
 
 	const { data: trainingData, ispending } = useFetchAuth("http://localhost:8080/api/user/admin/users");
-	console.log(trainingData.users);
 	return (
 		<div className={style.AdminList}>
 			<h1>
@@ -32,6 +31,13 @@ const AdminList = () => {
 			{!ispending && (
 				<div className={style.allAdminWrapper}>
 					<div className={style.allAdminGrid}>
+						<div className={style.admin_Table_Heading}>
+							<h1>User Name</h1>
+							<h1>Role</h1>
+							<h1>Email</h1>
+							<h1>&nbsp;</h1>
+							<h1>&nbsp;</h1>
+						</div>
 						{trainingData.users.map((Admin) => (
 							<div key={uuid()} className={style.admin_Table}>
 								<h1>{Admin.name}</h1>
@@ -46,7 +52,11 @@ const AdminList = () => {
 								</button>
 							</div>
 						))}
-						{!ispending && <button className={style.new}>Add admin</button>}
+						{!ispending && (
+							<Link to={"/admin/addAdmin"}>
+								<button className={style.new}>Add admin</button>
+							</Link>
+						)}
 					</div>
 				</div>
 			)}
