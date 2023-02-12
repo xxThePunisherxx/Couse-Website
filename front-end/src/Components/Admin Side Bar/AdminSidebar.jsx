@@ -60,7 +60,7 @@ const AdminSidebar = () => {
 						to={"/admin/addCategory"}
 					>
 						<h1>
-							<AiOutlineAppstoreAdd /> &nbsp;Add Training Category
+							<AiOutlineAppstoreAdd /> &nbsp;Add Course Category
 						</h1>
 					</NavLink>
 					<NavLink

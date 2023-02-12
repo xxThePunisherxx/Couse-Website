@@ -62,7 +62,7 @@ const AdminCourseList = () => {
 					<div className={style.allCourseWrapper_Heading}>
 						<h1>
 							Active
-							<span className={style.Heading_Highlight}>Courses</span>
+							<span className={style.Heading_Highlight}> Courses</span>
 						</h1>
 					</div>
 

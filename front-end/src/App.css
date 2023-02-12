@@ -141,6 +141,7 @@
     margin-right: 10px;
     border-radius: 20px;
     color: white;
+    text-transform: capitalize;
 }
 
 .successBoard h1,

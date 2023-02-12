@@ -65,11 +65,11 @@ const CourseCategoryList = () => {
 					</div>
 				</>
 			)}
-			{!ispending && (
+			{/* {!ispending && (
 				<Link to={"/admin/addCategory"}>
 					<button className={style.new}>Add Course Category</button>
 				</Link>
-			)}
+			)} */}
 		</div>
 	);
 };
