@@ -22,6 +22,7 @@ const AddCourse = () => {
 	const [showFailedUpload, setShowFailedUpload] = useState(false);
 	const [selectedFile, setSelectedFile] = useState();
 	const [uploadedURl, setUploadedURl] = useState("");
+	const [showImage, setShowImage] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -92,11 +93,14 @@ const AddCourse = () => {
 					withCredentails: true,
 				},
 			});
-			setUploadedURl(response.data.path.path);
-			setShowSuccessUpload(true);
-			setTimeout(() => {
-				setShowSuccessUpload(false);
-			}, 1000);
+			if (response) {
+				setUploadedURl(response.data.path.path);
+				setShowSuccessUpload(true);
+				setShowImage(true);
+				setTimeout(() => {
+					setShowSuccessUpload(false);
+				}, 1000);
+			}
 		} catch (err) {
 			setShowFailedUpload(true);
 			setTimeout(() => {
@@ -149,6 +153,7 @@ const AddCourse = () => {
 							<input name="course_Image" type="file" required onChange={fileSelectedHandler}></input>
 							<button onClick={handleUpload}>Upload image</button>
 						</div>
+						{showImage && <img className={style.Uplaod_Img} src={uploadedURl} alt="Upload  preview"></img>}
 						<h1>Course Priority</h1>
 						<input name="course_Priority" type="number" required></input>
 						<h1>Rating</h1>

@@ -109,3 +109,8 @@
 .ImageUpload button {
     font-size: 1rem;
 }
+
+.Uplaod_Img {
+    margin-top: 20px;
+    width: 300px;
+}
