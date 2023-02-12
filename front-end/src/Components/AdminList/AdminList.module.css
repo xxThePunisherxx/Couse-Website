@@ -57,11 +57,13 @@
 }
 
 
-.Delete_Btn:disabled {
+.Delete_Btn:disabled,
+.Edit_Btn:disabled {
     cursor: not-allowed;
 }
 
-.Delete_Btn:disabled:hover {
+.Delete_Btn:disabled:hover,
+.Edit_Btn:disabled:hover {
     color: rgba(16, 16, 16, .3);
 }
 
@@ -157,7 +159,6 @@
 
 .close_btn button:hover {
     color: red;
-    /* background-color: white; */
 }
 
 .contnets {

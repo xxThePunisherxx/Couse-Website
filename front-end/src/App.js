@@ -26,6 +26,7 @@ import Addadmin from "./Pages/Add admin/Addadmin";
 import Team from "./Pages/Our Team/Team";
 import Contact from "./Pages/Contact us/Contact";
 import Unauthorized from "./Pages/Unauthorized/Unauthorized";
+import UpdateAdmin from "./Pages/Update Admin/UpdateAdmin";
 
 function App() {
 	return (
@@ -65,6 +66,7 @@ function App() {
 					{/* only super-admin can access these routes */}
 					<Route path="/admin" element={<AdminLayout />}>
 						<Route path="addAdmin" element={<Addadmin />} />
+						<Route path="updateUser/:adminID" element={<UpdateAdmin />} />
 					</Route>
 				</Route>
 			</Route>

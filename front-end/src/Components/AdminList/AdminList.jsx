@@ -95,9 +95,11 @@ const AdminList = () => {
 										<h1>{Admin.name}</h1>
 										<h1>{Admin.role}</h1>
 										<h1>{Admin.email}</h1>
-										<button className={style.Edit_Btn}>
-											<MdModeEditOutline />
-										</button>
+										<Link to={`/admin/updateUser/${Admin._id}`}>
+											<button className={style.Edit_Btn} disabled={Admin.Disable}>
+												<MdModeEditOutline />
+											</button>
+										</Link>
 										<button className={style.Delete_Btn} disabled={Admin.Disable} onClick={() => handleDeletePopup(Admin._id)}>
 											<MdDeleteSweep />
 										</button>
