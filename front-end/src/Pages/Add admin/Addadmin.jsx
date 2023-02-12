@@ -12,6 +12,7 @@ const Addadmin = () => {
 	const [showSuccess, setShowSuccess] = useState(false);
 	const [showFail, setShowFail] = useState(false);
 
+	const [showName, setshowName] = useState(false);
 	const [showEmailerr, setshowEmailerr] = useState(false);
 	const [showpwdErr, setShowpwdErr] = useState(false);
 	const [showMatcherr, setShowMatcherr] = useState(false);
@@ -28,12 +29,21 @@ const Addadmin = () => {
 			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		);
 		const passwordRegex = new RegExp(/^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/);
+		const nameRegex = new RegExp(/^.{6,}$/);
 		e.preventDefault();
 		const data = new FormData(e.target);
 		let enterdData = Object.fromEntries(data.entries());
 
 		const isValidEmail = emailRegex.test(enterdData.user_email);
 		const isValidPassword = passwordRegex.test(enterdData.Password);
+		const isValidName = nameRegex.test(enterdData.user_Name);
+		if (isValidName === false) {
+			setshowName(true);
+			setTimeout(() => {
+				addAdminRef.current.focus(); // set focus to email input feild.
+				setshowName(false);
+			}, 2000);
+		}
 		if (isValidEmail === false) {
 			setshowEmailerr(true);
 
@@ -58,7 +68,7 @@ const Addadmin = () => {
 			}, 2000);
 		}
 
-		if (isValidEmail && isValidPassword && enterdData.Password === enterdData.retype_password) {
+		if (isValidEmail && isValidPassword && enterdData.Password === enterdData.retype_password && isValidName) {
 			console.log(enterdData);
 			console.log("validated and ready to be sent to server");
 			const postData = {
@@ -102,6 +112,11 @@ const Addadmin = () => {
 						<h1>Please Enter a valid email. </h1>
 					</div>
 				)}
+				{showName && (
+					<div className={style.Pwd_match}>
+						<h1>User name cannot be less than six character.</h1>
+					</div>
+				)}
 				{showpwdErr && (
 					<div className={style.Valid_pwd}>
 						<h1>Please Enter a valid password. </h1>
@@ -121,7 +136,7 @@ const Addadmin = () => {
 					</div>
 				)}
 				<form onSubmit={handlesubmit} autoComplete="off" className={style.FormWrappper}>
-					<h1>Name</h1>
+					<h1>User Name</h1>
 					<input name="user_Name" type="text" required ref={addAdminRef}></input>
 					<h1>Email</h1>
 					<input name="user_email" type="text" ref={emailRef}></input>
