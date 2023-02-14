@@ -5,7 +5,7 @@ import style from "./Testimonial.module.css";
 import TestomonialCarousel from "../../Components/TestomonialCarousel/TestomonialCarousel";
 import { Testomonials } from "../../Data/Testimonial";
 
-// asdasd
+//
 
 const Testimonial = () => {
 	return (
