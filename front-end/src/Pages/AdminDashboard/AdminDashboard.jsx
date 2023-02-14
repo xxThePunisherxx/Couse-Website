@@ -8,7 +8,6 @@ import useAuth from "../../hooks/useAuth";
 
 const AdminDashboard = () => {
 	const { auth } = useAuth();
-
 	return (
 		<div className={style.Dashboard}>
 			<AdminCourseList />
