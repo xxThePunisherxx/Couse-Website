@@ -27,7 +27,12 @@ const AddCourse = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				let response = await axios.get("http://localhost:8080/api/category");
+				let response = await axios.get("http://localhost:8080/api/category", {
+					headers: {
+						Authorization: `Bearer ${auth.Token}`,
+						withCredentails: true,
+					},
+				});
 				setTrainingCategory(response?.data?.categorys);
 			} catch (error) {
 				if (error.response) {
@@ -109,6 +114,7 @@ const AddCourse = () => {
 		}
 	};
 
+	console.log(uploadedURl);
 	useEffect(() => {
 		//* This will put cursor to first input feild on the form.
 		addRef.current.focus();

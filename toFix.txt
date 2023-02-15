@@ -1,0 +1,21 @@
+Backend issues
+    1. prevent deletion on superadmin
+    2. no auth role required on get training ClientsData
+    3. send usesr role in response while login.
+    4. hide user password feild in login response
+    5. CRUDE operation on testomonial 
+
+
+
+FrontEnd task
+    1. About uspage
+    2. Contact form connection to Backend
+    3. Style 404 page
+    4. style unauthorized page
+    5. remove local  token after 24 hr of login
+    6. Style add testomonial page
+    7. Student project page
+    8. Success story(review pending)
+    9. Skeleton  on all course page on admin side
+    10. file upload on testomonial page.
+
