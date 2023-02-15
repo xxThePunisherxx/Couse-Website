@@ -34,10 +34,15 @@ const RemoveCourse = () => {
 		const fetchData = async () => {
 			// get request to get pre-update value of the course.
 			try {
-				let response = await axios.get("http://localhost:8080/api/training/" + courseID);
+				let response = await axios.get("http://localhost:8080/api/training/" + courseID, {
+					headers: {
+						Authorization: `Bearer ${auth.Token}`,
+						withCredentails: true,
+					},
+				});
 				setIndividualTrainingData(response.data.trainings);
 				setUploadedURl(response.data.trainings.image);
-				setIndividualTrainingCat({ _id: null, course_type: "Could Not find course category." });
+				setIndividualTrainingCat({ _id: null, course_type: "Could Not find course category.", disable: true });
 				if (response.data.trainings.category) {
 					setIndividualTrainingCat(response.data.trainings.category);
 				}
@@ -51,12 +56,18 @@ const RemoveCourse = () => {
 			}
 		};
 		fetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [courseID]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				let response = await axios.get("http://localhost:8080/api/category");
+				let response = await axios.get("http://localhost:8080/api/category", {
+					headers: {
+						Authorization: `Bearer ${auth.Token}`,
+						withCredentails: true,
+					},
+				});
 				setTrainingCategory(response.data.categorys);
 			} catch (error) {
 				if (error.response) {
@@ -197,8 +208,9 @@ const RemoveCourse = () => {
 						<h1>Course Category</h1>
 
 						<select name="dropdown">
-							<option value={IndividualtrainingDataCat._id}>{IndividualtrainingDataCat.course_type}</option>
-
+							<option value={IndividualtrainingDataCat._id} disabled={IndividualtrainingDataCat.disable}>
+								{IndividualtrainingDataCat.course_type}
+							</option>
 							{trainingCategory.map((Category) => (
 								<option key={uuid()} value={Category._id}>
 									{Category.course_type}

@@ -44,6 +44,7 @@ const AddCourse = () => {
 			}
 		};
 		fetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handlesubmit = async (e) => {
@@ -114,7 +115,6 @@ const AddCourse = () => {
 		}
 	};
 
-	console.log(uploadedURl);
 	useEffect(() => {
 		//* This will put cursor to first input feild on the form.
 		addRef.current.focus();
@@ -168,7 +168,7 @@ const AddCourse = () => {
 						<input name="course_careerPath" type="text" required></input>
 						<h1>Course Category</h1>
 						<select name="dropdown">
-							<option>Select Category</option>
+							<option disabled={true}>Select Category</option>
 							{trainingCategory.map((Category) => (
 								<option key={uuid()} value={Category._id}>
 									{Category.course_type}
