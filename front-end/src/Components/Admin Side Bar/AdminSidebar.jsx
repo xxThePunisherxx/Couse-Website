@@ -67,6 +67,16 @@ const AdminSidebar = () => {
 						className={({ isActive }) => {
 							return "AdminDash-" + (isActive ? "Active" : "Inactive");
 						}}
+						to={"/admin/addTestomonial"}
+					>
+						<h1>
+							<AiOutlineAppstoreAdd /> &nbsp;Add testominial
+						</h1>
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => {
+							return "AdminDash-" + (isActive ? "Active" : "Inactive");
+						}}
 						to={"/"}
 					>
 						<h1>
