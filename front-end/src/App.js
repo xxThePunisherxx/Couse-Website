@@ -27,6 +27,7 @@ import Team from "./Pages/Our Team/Team";
 import Contact from "./Pages/Contact us/Contact";
 import Unauthorized from "./Pages/Unauthorized/Unauthorized";
 import UpdateAdmin from "./Pages/Update Admin/UpdateAdmin";
+import AddTestomonial from "./Pages/Add Testomonial/AddTestomonial";
 
 function App() {
 	return (
@@ -59,6 +60,8 @@ function App() {
 						<Route path="dashboard" element={<AdminDashboard />} />
 						<Route path="addCategory" element={<AddCourseCate />} />
 						<Route path="allCourse" element={<AdminCourseListPage />} />
+						<Route path="addTestomonial" element={<AddTestomonial />} />
+
 						{/* <Route path="side" element={<AdminSidebar />} />  //! just for testing sidebar component, to be removed at final  stage*/}
 					</Route>
 				</Route>
