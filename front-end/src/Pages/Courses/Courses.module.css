@@ -11,8 +11,6 @@
     grid-template-columns: repeat(5, 400px);
     column-gap: 20px;
     row-gap: 20px;
-
-
 }
 
 .MainHeading {
@@ -32,7 +30,6 @@
 }
 
 .Training:hover {
-    cursor: pointer;
     border-radius: 15px;
     transform: scale3d(1.02, 1.02, 1.02);
 }
