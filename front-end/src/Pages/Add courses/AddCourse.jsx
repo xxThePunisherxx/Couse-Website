@@ -12,6 +12,7 @@ import MessageBoard from "../../Components/Message Board/MessageBoard";
 const AddCourse = () => {
 	const { auth } = useAuth();
 	const addRef = useRef();
+
 	const navigate = useNavigate();
 	const [trainingCategory, setTrainingCategory] = useState([{}]);
 	const [ckPara, setCkPara] = useState("");
@@ -23,6 +24,7 @@ const AddCourse = () => {
 	const [selectedFile, setSelectedFile] = useState();
 	const [uploadedURl, setUploadedURl] = useState("");
 	const [showImage, setShowImage] = useState(false);
+	const [showSelectCat, setShowSelectCat] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -62,26 +64,34 @@ const AddCourse = () => {
 			career: enterdData.course_careerPath,
 			syllabus: ckStructure,
 		};
-		try {
-			const response = await axios.post("http://localhost:8080/api/training/add", postData, {
-				headers: {
-					Authorization: `Bearer ${auth.Token}`,
-					withCredentails: true,
-				},
-			});
-			if (response.status === 201) {
-				setShowSuccess(true);
-				setTimeout(() => {
+
+		if (enterdData.dropdown !== "null") {
+			try {
+				const response = await axios.post("http://localhost:8080/api/training/add", postData, {
+					headers: {
+						Authorization: `Bearer ${auth.Token}`,
+						withCredentails: true,
+					},
+				});
+				if (response.status === 201) {
+					setShowSuccess(true);
 					setTimeout(() => {
-						setShowSuccess(false);
-					}, 1000);
-					navigate("/admin/dashboard");
-				}, 2000);
+						setTimeout(() => {
+							setShowSuccess(false);
+						}, 1000);
+						navigate("/admin/dashboard");
+					}, 2000);
+				}
+			} catch (err) {
+				setShowFailed(true);
+				setTimeout(() => {
+					setShowFailed(false);
+				}, 1000);
 			}
-		} catch (err) {
-			setShowFailed(true);
+		} else if (enterdData.dropdown === "null") {
+			setShowSelectCat(true);
 			setTimeout(() => {
-				setShowFailed(false);
+				setShowSelectCat(false);
 			}, 1000);
 		}
 	};
@@ -167,8 +177,9 @@ const AddCourse = () => {
 						<h1>Career Path</h1>
 						<input name="course_careerPath" type="text" required></input>
 						<h1>Course Category</h1>
+						{showSelectCat && <h1 style={{ color: "red" }}>Select a course category</h1>}
 						<select name="dropdown">
-							<option disabled={true}>Select Category</option>
+							<option value="null">Select Category</option>
 							{trainingCategory.map((Category) => (
 								<option key={uuid()} value={Category._id}>
 									{Category.course_type}
