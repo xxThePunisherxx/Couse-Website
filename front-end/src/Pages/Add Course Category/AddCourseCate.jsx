@@ -57,7 +57,7 @@ const AddCourseCate = () => {
 			</div>
 			{showSuccess && (
 				//* Success Message
-				<MessageBoard Message_type="successBoard" Message="Course category Added succesfully" />
+				<MessageBoard Message_type="successBoard" Message="Course category Added successfully" />
 			)}
 			{showFail && (
 				//* Fail Message

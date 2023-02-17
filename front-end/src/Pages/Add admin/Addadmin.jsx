@@ -155,7 +155,7 @@ const Addadmin = () => {
 			{showSuccess && (
 				//* Success Message on succesfull course
 				<div className="successBoard">
-					<h1>Course category Added succesfully</h1>
+					<h1>Course category Added successfully</h1>
 				</div>
 			)}
 			{showFail && (
