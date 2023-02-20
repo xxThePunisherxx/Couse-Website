@@ -44,7 +44,7 @@ const AdminList = () => {
 						setShowSuccess(false);
 					}, 1000);
 					window.location.reload();
-				}, 2000);
+				}, 1000);
 			}
 		} catch (error) {
 			setShowFail(true);
