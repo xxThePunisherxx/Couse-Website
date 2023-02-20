@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import style from "./AdminSidebar.module.css";
 import { RxDashboard } from "react-icons/rx";
 import { AiOutlineAppstoreAdd, AiFillHome } from "react-icons/ai";
@@ -18,7 +18,9 @@ const AdminSidebar = () => {
 		<div className={style.AdminSidebarWrapper}>
 			<div className={style.AdminSidebar}>
 				<div className={style.Logo}>
-					<img src={Logo} alt="" />
+					<Link to={"/admin/dashboard"}>
+						<img src={Logo} alt="" />
+					</Link>
 				</div>
 				<div className={style.DashboardLinks}>
 					<NavLink
