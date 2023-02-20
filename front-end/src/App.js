@@ -27,6 +27,7 @@ import AddTestomonial from "./Pages/Add Testomonial/AddTestomonial";
 import AboutUs from "./Pages/About Us/AboutUs";
 import GoogleForm from "./Pages/Enquirery/GoogleForm";
 import EnrollForm from "./Pages/Enroll/EnrollForm";
+import StudentProject from "./Pages/Student Project/StudentProject";
 
 function App() {
 	return (
@@ -40,7 +41,7 @@ function App() {
 				<Route path="/aboutUS" element={<AboutUs />} />
 				<Route path="contact" element={<Contact />} />
 				<Route path="/gallery" element={<Comming />} />
-				<Route path="/studentProjects" element={<Comming />} />
+				<Route path="/studentProjects" element={<StudentProject />} />
 				<Route path="/allClients" element={<ClientsAll />} />
 				<Route path="/unauthorized" element={<Unauthorized />} />
 				<Route path="/test" element={<Test />} /> just for quick testing of page
