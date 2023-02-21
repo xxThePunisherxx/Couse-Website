@@ -4,10 +4,12 @@ import { useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MessageBoard from "../../Components/Message Board/MessageBoard";
+import useAuth from "../../hooks/useAuth";
 
 const AddCourseCate = () => {
 	const [showSuccess, setShowSuccess] = useState(false);
 	const [showFail, setShowFail] = useState(false);
+	const { auth } = useAuth();
 
 	const cateRef = useRef();
 	const navigate = useNavigate();
@@ -22,7 +24,12 @@ const AddCourseCate = () => {
 			course_type: enterdData.course_Category,
 		};
 		try {
-			const response = await axios.post("http://localhost:8080/api/category/add", postData);
+			const response = await axios.post("http://localhost:8080/api/category/add", postData, {
+				headers: {
+					Authorization: `Bearer ${auth.Token}`,
+					withCredentails: true,
+				},
+			});
 
 			if (response.status === 201) {
 				setShowSuccess(true);
