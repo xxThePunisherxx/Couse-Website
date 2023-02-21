@@ -15,7 +15,7 @@ function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 			autoPlay &&
 			setTimeout(() => {
 				slideRight();
-			}, 5000);
+			}, ShowItemFor);
 	});
 
 	const slideRight = () => {
@@ -43,15 +43,15 @@ function TestomonialCarousel({ images, EnableautoPlay, ShowItemFor }) {
 			>
 				{images.map((image, index) => {
 					return (
-						<Link to={image.Link} key={index}>
-							<div className={index === current ? "Testicarousel_card Testicarousel_card-active" : "Testicarousel_card"}>
-								<img className={style.cardImage} src={image.image} alt="" />
+						<div key={index} className={index === current ? "Testicarousel_card Testicarousel_card-active" : "Testicarousel_card"}>
+							<img className={style.cardImage} src={image.image} alt="" />
+							<Link to={image.Link}>
 								<div className={style.cardText}>
-									<h1>{image.Review}</h1>
-									<h2>{image.Name}</h2>
+									<h1>{image.description}</h1>
+									<h2>{image.name}</h2>
 								</div>
-							</div>
-						</Link>
+							</Link>
+						</div>
 					);
 				})}
 				<div className={style.carouselArrowLeft} onClick={slideLeft}>
