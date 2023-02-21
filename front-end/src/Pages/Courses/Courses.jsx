@@ -34,7 +34,7 @@ const Courses = () => {
 						<h1>{item.title}</h1>
 						<h2>Duration: {item.duration}</h2>
 						<Link to={`/course-view/${item._id}`}>
-							<button>View Details</button>
+							<button>Learn more</button>
 						</Link>
 					</div>
 				))}
