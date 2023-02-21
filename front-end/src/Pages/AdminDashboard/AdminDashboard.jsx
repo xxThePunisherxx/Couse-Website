@@ -5,6 +5,7 @@ import AdminList from "../../Components/AdminList/AdminList";
 import AdminCourseList from "../../Components/AdminCourseList/AdminCourseList";
 import CourseCategoryList from "../../Components/CourseCategoryList/CourseCategoryList";
 import useAuth from "../../hooks/useAuth";
+import AdminTestomonialList from "../../Components/AdminTestomonialList/AdminTestomonialList";
 
 const AdminDashboard = () => {
 	const { auth } = useAuth();
@@ -12,8 +13,8 @@ const AdminDashboard = () => {
 		<div className={style.Dashboard}>
 			<AdminCourseList />
 			{auth.Role === "superAdmin" && <AdminList />}
-
 			<CourseCategoryList />
+			<AdminTestomonialList />
 		</div>
 	);
 };
