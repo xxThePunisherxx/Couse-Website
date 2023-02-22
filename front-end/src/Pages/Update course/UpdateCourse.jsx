@@ -34,7 +34,7 @@ const RemoveCourse = () => {
 		const fetchData = async () => {
 			// get request to get pre-update value of the course.
 			try {
-				let response = await axios.get("http://localhost:8080/api/training/" + courseID, {
+				let response = await axios.get("https://learning-management-system-kx6y.onrender.com/api/training/" + courseID, {
 					headers: {
 						Authorization: `Bearer ${auth.Token}`,
 						withCredentails: true,
@@ -62,7 +62,7 @@ const RemoveCourse = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				let response = await axios.get("http://localhost:8080/api/category", {
+				let response = await axios.get("https://learning-management-system-kx6y.onrender.com/api/category", {
 					headers: {
 						Authorization: `Bearer ${auth.Token}`,
 						withCredentails: true,
@@ -79,6 +79,7 @@ const RemoveCourse = () => {
 			}
 		};
 		fetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handlesubmit = async (e) => {
@@ -99,7 +100,7 @@ const RemoveCourse = () => {
 		};
 		console.log(postData);
 		try {
-			const response = await axios.put(`http://localhost:8080/api/training/update/${courseID}`, postData, {
+			const response = await axios.put(`https://learning-management-system-kx6y.onrender.com/api/training/update/${courseID}`, postData, {
 				headers: {
 					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
@@ -134,7 +135,7 @@ const RemoveCourse = () => {
 		const fd = new FormData();
 		fd.append("file", selectedFile);
 		try {
-			let response = await axios.post("http://localhost:8080/api/file/single", fd, {
+			let response = await axios.post("https://learning-management-system-kx6y.onrender.com/api/file/single", fd, {
 				headers: {
 					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
@@ -192,13 +193,11 @@ const RemoveCourse = () => {
 							}}
 						/>
 						<h1>Course Image</h1>
-						{/* <input name="course_Image" defaultValue={IndividualtrainingData.image} type="text" required></input> */}
 						<div className={style.ImageUpload}>
 							<input name="course_Image" type="file" required onChange={fileSelectedHandler}></input>
 							<button onClick={handleUpload}>Upload image</button>
 						</div>
 						{showImage && <img className={style.Uplaod_Img} src={uploadedURl} alt="Upload  preview"></img>}
-
 						<h1>Course Priority</h1>
 						<input name="course_Priority" defaultValue={IndividualtrainingData.priority} type="number" required></input>
 						<h1>Rating</h1>
@@ -206,7 +205,6 @@ const RemoveCourse = () => {
 						<h1>Career Path</h1>
 						<input name="course_careerPath" defaultValue={IndividualtrainingData.career} type="text" required></input>
 						<h1>Course Category</h1>
-
 						<select name="dropdown">
 							<option value={IndividualtrainingDataCat._id} disabled={IndividualtrainingDataCat.disable}>
 								{IndividualtrainingDataCat.course_type}
