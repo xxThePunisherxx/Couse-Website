@@ -8,8 +8,6 @@ import axios from "axios";
 import useFetch from "../../Utils/Hooks/fetch";
 import useAuth from "../../hooks/useAuth";
 import uuid from "react-uuid";
-// import { CKEditor } from "@ckeditor/ckeditor5-react";
-// import Editor from "ckeditor5-custom-build/build/ckeditor";
 import MessageBoard from "../../Components/Message Board/MessageBoard";
 
 const AddTestomonial = () => {
@@ -24,10 +22,9 @@ const AddTestomonial = () => {
 	const [showFailed, setShowFailed] = useState(false);
 	const [showImage, setShowImage] = useState(false);
 	const [showMaxLen, setShowMaxLen] = useState(false);
-	// const [ckPara, setCkPara] = useState("");
 	const [showSelectCat, setShowSelectCat] = useState(false);
 
-	const { data: trainingResponse } = useFetch("http://localhost:8080/api/training");
+	const { data: trainingResponse } = useFetch("https://learning-management-system-kx6y.onrender.com/api/training");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -46,11 +43,10 @@ const AddTestomonial = () => {
 			description: enterdData.testominial,
 			course: enterdData.dropDown,
 		};
-		// console.log(enterdData.dropdown !== "null" && enterdData.testominial.length < 500);
 		if (enterdData.dropdown !== "null" && enterdData.testominial.length < 500) {
 			console.log("Asdadkhgasdjgasd");
 			try {
-				const response = await axios.post("http://localhost:8080/api/testimonial/add", postData, {
+				const response = await axios.post("https://learning-management-system-kx6y.onrender.com/api/testimonial/add", postData, {
 					headers: {
 						Authorization: `Bearer ${auth.Token}`,
 						withCredentails: true,
@@ -87,7 +83,7 @@ const AddTestomonial = () => {
 		const fd = new FormData();
 		fd.append("file", selectedFile);
 		try {
-			let response = await axios.post("http://localhost:8080/api/file/single", fd, {
+			let response = await axios.post("https://learning-management-system-kx6y.onrender.com/api/file/single", fd, {
 				headers: {
 					Authorization: `Bearer ${auth.Token}`,
 					withCredentails: true,
@@ -165,6 +161,5 @@ const AddTestomonial = () => {
 		</>
 	);
 };
-//todo style the form
 
 export default AddTestomonial;
