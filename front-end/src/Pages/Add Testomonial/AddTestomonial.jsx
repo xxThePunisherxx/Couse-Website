@@ -30,7 +30,7 @@ const AddTestomonial = () => {
 		e.preventDefault();
 		const data = new FormData(e.target);
 		let enterdData = Object.fromEntries(data.entries());
-		if (enterdData.testominial.length > 500) {
+		if (enterdData.testominial.length > 300) {
 			setShowMaxLen(true);
 			setTimeout(() => {
 				setShowMaxLen(false);
@@ -43,7 +43,7 @@ const AddTestomonial = () => {
 			description: enterdData.testominial,
 			course: enterdData.dropDown,
 		};
-		if (enterdData.dropdown !== "null" && enterdData.testominial.length < 500) {
+		if (enterdData.dropdown !== "null" && enterdData.testominial.length < 300) {
 			console.log("Asdadkhgasdjgasd");
 			try {
 				const response = await axios.post("https://learning-management-system-kx6y.onrender.com/api/testimonial/add", postData, {
@@ -125,8 +125,8 @@ const AddTestomonial = () => {
 						</div>
 						{showImage && <img className={style.Uplaod_Img} src={uploadedURl} alt="Upload  preview"></img>}
 						<h1 className={style.ck}>Testomonial </h1>
-						{showMaxLen && <h1 style={{ color: "red" }}>Maximum of 500 characters</h1>}
-						<textarea name="testominial" rows="5" cols="40" placeholder="Max length 500 characters"></textarea>
+						{showMaxLen && <h1 style={{ color: "red" }}>Maximum of 300 characters</h1>}
+						<textarea name="testominial" rows="5" cols="40" placeholder="Max length 300 characters"></textarea>
 						<h1>Course Enrolled</h1>
 						{showSelectCat && <h1 style={{ color: "red" }}>Select a course category</h1>}
 						<select name="dropDown">
