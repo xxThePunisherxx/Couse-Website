@@ -64,7 +64,7 @@
 }
 
 .training_header_btn button:nth-child(1):hover {
-    background-color: #0f5288;
+    background-color: #2bb673;
     color: white;
 }
 
@@ -84,9 +84,7 @@
     color: white;
 }
 
-/* .training_header_btn button:hover {
-    color: white;
-} */
+
 
 .training_header_btn button {
     --primary-color: #645bff;
@@ -160,11 +158,11 @@
 .Training_Description h1 {
     width: fit-content;
     font-size: 1.7rem;
-    color: #0f5288;
+    color: #2bb673;
     text-align: left;
     text-transform: uppercase;
     font-weight: 800;
-    border-bottom: 3px solid #0f5288;
+    border-bottom: 3px solid #2bb673;
     margin-bottom: 20px;
 }
 
@@ -180,7 +178,7 @@
 }
 
 .BannerHeading {
-    background-color: #0f5288;
+    background-color: #2bb673;
     color: white;
     margin: 0 auto;
     display: flex;
