@@ -98,7 +98,7 @@ const RemoveCourse = () => {
 			career: enterdData.course_careerPath,
 			syllabus: ckStructure,
 		};
-		console.log(postData);
+
 		try {
 			const response = await axios.put(`https://learning-management-system-kx6y.onrender.com/api/training/update/${courseID}`, postData, {
 				headers: {
@@ -115,10 +115,6 @@ const RemoveCourse = () => {
 					navigate("/admin/dashboard");
 				}, 2000);
 			}
-			// console.log(response);
-			// setTimeout(() => {
-			// 	navigate("/admin/dashboard");
-			// }, 1000);
 		} catch (error) {
 			// console.log(error);
 			setShowFailed(true);

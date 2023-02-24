@@ -55,8 +55,6 @@ const AddTestomonial = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [testomonialID]);
 
-	console.log("🚀 ~ file: UpdateTestomonial.jsx:28 ~ AddTestomonial ~ TestomonialResponse:", TestomonialResponse);
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target);
