@@ -20,7 +20,14 @@ const Hero = () => {
 					</button>
 				</div>
 				<div className={style.mid}>
-					<Carousel images={filteredData} EnableautoPlay={false} ShowItemFor={8000} />
+					{ispending && (
+						<div className="loader">
+							<div className="scanner">
+								<span>Loading...</span>
+							</div>
+						</div>
+					)}
+					{!ispending && <Carousel images={filteredData} EnableautoPlay={false} ShowItemFor={8000} />}
 				</div>
 			</div>
 		</div>
