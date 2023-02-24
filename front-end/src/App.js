@@ -28,6 +28,10 @@ import AboutUs from "./Pages/About Us/AboutUs";
 import GoogleForm from "./Pages/Enquirery/GoogleForm";
 import EnrollForm from "./Pages/Enroll/EnrollForm";
 import StudentProject from "./Pages/Student Project/StudentProject";
+import AdminSidebar from "./Components/Admin Side Bar/AdminSidebar";
+import UpdateTestomonial from "./Pages/UpdateTestomonial/UpdateTestomonial";
+import AddTeam from "./Pages/AddTeam/AddTeam";
+import UpdateTeam from "./Pages/UpdateTeam/UpdateTeam";
 
 function App() {
 	return (
@@ -59,12 +63,13 @@ function App() {
 						<Route path="addCourse" element={<AddCourse />} />
 						<Route path="updateCourse/:courseID" element={<Updatecourse />} />
 						<Route path="updateCourseCategory/:categoryID" element={<UpdateCourseCategory />} />
+						<Route path="updateTestomonial/:testomonialID" element={<UpdateTestomonial />} />
+						<Route path="updateTeam/:teamID" element={<UpdateTeam />} />
 						<Route path="dashboard" element={<AdminDashboard />} />
 						<Route path="addCategory" element={<AddCourseCate />} />
 						<Route path="allCourse" element={<AdminCourseListPage />} />
 						<Route path="addTestomonial" element={<AddTestomonial />} />
-
-						{/* <Route path="side" element={<AdminSidebar />} />  //! just for testing sidebar component, to be removed at final  stage*/}
+						<Route path="addTeam" element={<AddTeam />} />
 					</Route>
 				</Route>
 				<Route element={<RequireAuth allowedRoles={["superAdmin"]} />}>
@@ -73,6 +78,10 @@ function App() {
 						<Route path="addAdmin" element={<Addadmin />} />
 						<Route path="updateUser/:adminID" element={<UpdateAdmin />} />
 					</Route>
+				</Route>
+				<Route>
+					{/*  //! just for testing sidebar component, to be removed at final  stage */}
+					<Route path="side" element={<AdminSidebar />} />
 				</Route>
 			</Route>
 		</Routes>
